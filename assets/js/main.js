@@ -72,6 +72,9 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(() => {
         initParticles();
     }, 100); // Small delay to ensure DOM is fully loaded
+    
+    // Generate CSRF token for forms
+    generateCSRFToken();
 });
 
 function initParticles() {
@@ -237,4 +240,30 @@ function hexToRgb(hex) {
     const b = parseInt(hex.substring(4, 6), 16);
     
     return { r, g, b };
+}
+
+// Generate CSRF token for form protection
+function generateCSRFToken() {
+    const forms = document.querySelectorAll('form');
+    
+    forms.forEach(form => {
+        // Skip FormSubmit forms
+        if (form.action && form.action.includes('formsubmit.co')) {
+            return;
+        }
+        
+        const csrfInput = form.querySelector('input[name="_csrf"]');
+        if (csrfInput) {
+            // Generate a random token
+            const token = Math.random().toString(36).substring(2, 15) + 
+                          Math.random().toString(36).substring(2, 15) +
+                          Date.now().toString(36);
+            
+            // Set the token value
+            csrfInput.value = token;
+            
+            // Store in sessionStorage for validation if needed
+            sessionStorage.setItem('csrf_token', token);
+        }
+    });
 } 

@@ -1526,4 +1526,40 @@ section h2:after {
     .contact-method h4, .form-group label, .footer-info h3 {
         color: var(--heading-color);
     }
+}
+
+/* Add these styles for the 404 error page */
+.error-content {
+    padding: 60px 0;
+}
+
+.error-message {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 40px;
+    background-color: var(--bg-secondary);
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.error-message i {
+    font-size: 60px;
+    color: #FFC107;
+    margin-bottom: 20px;
+}
+
+.error-message h3 {
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.error-message p {
+    margin-bottom: 30px;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.error-message .btn {
+    display: inline-block;
 } 

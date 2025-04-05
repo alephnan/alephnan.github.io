@@ -10,6 +10,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
+    <!-- Essential Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com 'unsafe-inline'; style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data:; connect-src 'self'; frame-src 'self' https://formsubmit.co; object-src 'none'">
 </head>
 <body>
     <header>
@@ -79,7 +84,7 @@
                     
                     <div class="contact-form">
                         <h3>Send Me a Message</h3>
-                        <form id="contact-form" action="https://formspree.io/f/your-formspree-id" method="POST">
+                        <form id="contact-form" action="https://formsubmit.co/b1588a5c6cf6dbc7596769f7495eedfe" method="POST">
                             <div class="form-group">
                                 <label for="name">Name</label>
                                 <input type="text" id="name" name="name" required>
@@ -99,6 +104,14 @@
                                 <label for="message">Message</label>
                                 <textarea id="message" name="message" rows="5" required></textarea>
                             </div>
+                            
+                            <input type="hidden" name="_subject" value="New message from portfolio website">
+                            <input type="hidden" name="_captcha" value="true">
+                            <input type="hidden" name="_next" value="https://alephnan.github.io">
+                            <input type="hidden" name="_template" value="table">
+                            <input type="hidden" name="_autoresponse" value="Thank you for your message! I'll get back to you soon.">
+                            
+                            <input type="text" name="_honey" style="display:none">
                             
                             <button type="submit" class="btn">Send Message</button>
                         </form>
@@ -128,5 +141,37 @@
     </footer>
 
     <script src="assets/js/main.js"></script>
+    <script>
+        // For local testing - handle form submission manually
+        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+            const form = document.getElementById('contact-form');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Get form data
+                    const formData = new FormData(form);
+                    
+                    // Send the form data
+                    fetch(form.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    })
+                    .then(response => {
+                        // Redirect to thank you page
+                        window.location.href = 'thank-you.html';
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        // Still redirect even if there's an error
+                        window.location.href = 'thank-you.html';
+                    });
+                });
+            }
+        }
+    </script>
 </body>
 </html> 
