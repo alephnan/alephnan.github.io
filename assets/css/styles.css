@@ -1015,6 +1015,7 @@ footer {
     grid-template-columns: 1fr;
     gap: 30px;
     margin-top: 30px;
+    align-items: start;
 }
 
 @media (min-width: 992px) {
@@ -1061,28 +1062,35 @@ footer {
 .project-details {
     padding: 20px;
     flex: 1;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: auto auto 1fr auto auto;
+    gap: 8px;
+    align-items: start;
 }
 
 .project-details h3 {
     color: var(--heading-color);
-    margin-bottom: 8px;
+    margin-bottom: 0;
     font-size: 1.2rem;
+    min-height: 3rem;
+    display: flex;
+    align-items: center;
 }
 
 .project-category {
     color: var(--secondary-color);
     font-weight: 600;
-    margin-bottom: 12px;
+    margin-bottom: 0;
     font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 1px;
+    min-height: 1.3rem;
+    display: flex;
+    align-items: center;
 }
 
 .project-details p {
-    margin-bottom: 15px;
-    flex: 1;
+    margin-bottom: 0;
     font-size: 0.95rem;
     line-height: 1.5;
 }
@@ -1429,6 +1437,7 @@ body:after {
     display: grid;
     grid-template-columns: 1fr;
     gap: 40px;
+    align-items: start;
 }
 
 @media (min-width: 992px) {
@@ -1473,28 +1482,35 @@ body:after {
 .project-details {
     padding: 25px;
     flex: 1;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: auto auto 1fr auto auto;
+    gap: 10px;
+    align-items: start;
 }
 
 .project-details h3 {
     color: var(--heading-color);
-    margin-bottom: 10px;
+    margin-bottom: 0;
     font-size: 1.4rem;
+    min-height: 3.5rem;
+    display: flex;
+    align-items: center;
 }
 
 .project-category {
     color: var(--secondary-color);
     font-weight: 600;
-    margin-bottom: 15px;
+    margin-bottom: 0;
     font-size: 0.9rem;
     text-transform: uppercase;
     letter-spacing: 1px;
+    min-height: 1.5rem;
+    display: flex;
+    align-items: center;
 }
 
 .project-details p {
-    margin-bottom: 20px;
-    flex: 1;
+    margin-bottom: 0;
 }
 
 .project-tags {
