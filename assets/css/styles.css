@@ -792,6 +792,107 @@ footer {
     display: inline-block;
 }
 
+.resume-sheet {
+    background-color: var(--light-background);
+    border-radius: 12px;
+    padding: 35px 40px;
+    box-shadow: var(--shadow);
+}
+
+.resume-intro {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.resume-name {
+    font-size: 2.2rem;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+.resume-tagline {
+    font-weight: 600;
+    color: var(--secondary-color);
+    margin-bottom: 10px;
+}
+
+.resume-contact {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px 16px;
+    font-size: 0.95rem;
+}
+
+.resume-contact li {
+    position: relative;
+    padding-right: 16px;
+}
+
+.resume-contact li:after {
+    content: "|";
+    position: absolute;
+    right: 6px;
+    color: var(--accent-color);
+}
+
+.resume-contact li:last-child:after {
+    content: "";
+}
+
+.resume-competency {
+    margin-bottom: 20px;
+}
+
+.resume-competency h4 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.resume-bullets {
+    list-style: none;
+}
+
+.resume-bullets li {
+    margin-bottom: 8px;
+    position: relative;
+    padding-left: 18px;
+}
+
+.resume-bullets li:before {
+    content: "-";
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+    font-weight: 700;
+}
+
+.resume-entry {
+    margin-bottom: 20px;
+}
+
+.resume-entry-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 8px 16px;
+    align-items: baseline;
+}
+
+.resume-entry-header h4 {
+    margin-bottom: 0;
+    color: var(--primary-color);
+    font-size: 1.15rem;
+}
+
+.resume-entry-header span {
+    color: var(--secondary-color);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
 /* Timeline Styles */
 .timeline {
     position: relative;
@@ -1006,6 +1107,15 @@ footer {
     .footer-content {
         flex-direction: column;
         text-align: center;
+    }
+
+    .resume-sheet {
+        padding: 25px 22px;
+    }
+
+    .resume-entry-header {
+        flex-direction: column;
+        align-items: flex-start;
     }
 }
 
