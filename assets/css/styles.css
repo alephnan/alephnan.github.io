@@ -851,6 +851,38 @@ footer {
     font-size: 1.1rem;
 }
 
+.resume-skills-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 8px;
+}
+
+.resume-skills-table th,
+.resume-skills-table td {
+    padding: 6px 10px;
+    text-align: left;
+    vertical-align: top;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.resume-skills-table th {
+    color: var(--primary-color);
+    font-weight: 600;
+    white-space: nowrap;
+    width: 160px;
+}
+
+.resume-skills-table td {
+    color: var(--text-color);
+}
+
+.resume-entry-subtitle {
+    font-weight: 400;
+    font-size: 0.95em;
+    opacity: 0.8;
+}
+
 .resume-bullets {
     list-style: none;
 }
