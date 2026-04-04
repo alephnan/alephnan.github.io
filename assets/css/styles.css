@@ -1510,6 +1510,23 @@ footer::before {
         flex-direction: column;
         align-items: flex-start;
     }
+
+    .resume-skills-table th,
+    .resume-skills-table td {
+        display: block;
+        width: 100%;
+        padding: 4px 0;
+    }
+
+    .resume-skills-table th {
+        white-space: normal;
+        padding-top: 10px;
+        font-size: 0.9rem;
+    }
+
+    .resume-skills-table td {
+        padding-bottom: 6px;
+    }
 }
 
 /* ── Projects Page ── */
