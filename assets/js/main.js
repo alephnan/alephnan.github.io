@@ -79,6 +79,13 @@ document.addEventListener('DOMContentLoaded', function() {
     // Scroll-triggered reveal animations
     var revealElements = document.querySelectorAll('[data-reveal]');
     if (revealElements.length > 0) {
+        var initialRevealOffset = 120;
+
+        function shouldRevealImmediately(element) {
+            var rect = element.getBoundingClientRect();
+            return rect.top <= (window.innerHeight + initialRevealOffset);
+        }
+
         var revealObserver = new IntersectionObserver(function(entries) {
             entries.forEach(function(entry) {
                 if (entry.isIntersecting) {
@@ -95,6 +102,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         revealElements.forEach(function(el) {
+            if (shouldRevealImmediately(el)) {
+                el.classList.add('revealed');
+                return;
+            }
+
             revealObserver.observe(el);
         });
     }

@@ -32,3 +32,4 @@ docs/
 # Others
 CLAUDE.md
 .claude/
+.codex
