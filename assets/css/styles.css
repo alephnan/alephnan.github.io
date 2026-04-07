@@ -587,12 +587,17 @@ header .container {
     transition: var(--transition);
 }
 
+/* ── Main wrapper (particles sizing context) ── */
+main {
+    position: relative;
+    overflow: hidden;
+}
+
 /* ── Hero Section ── */
 .hero {
     padding: 140px 0 100px;
-    background-color: var(--background-color);
+    background-color: transparent;
     position: relative;
-    overflow: hidden;
 }
 
 /* Hero gradient mesh */
@@ -770,8 +775,22 @@ header .container {
 
 /* ── Highlights Section ── */
 .highlights {
-    background-color: var(--background-color);
+    background-color: transparent;
     position: relative;
+}
+
+.highlights::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(26,188,156,0.04) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.highlights .container {
+    position: relative;
+    z-index: 1;
 }
 
 .highlights h2 {
@@ -805,7 +824,6 @@ header .container {
 }
 
 .card {
-    background-color: var(--light-background);
     padding: 35px 30px;
     border-radius: 8px;
     box-shadow: var(--shadow-layered);
@@ -816,10 +834,19 @@ header .container {
     border: 2px solid transparent;
     position: relative;
     overflow: hidden;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    background: rgba(255, 255, 255, 0.7);
 }
 
 /* Glassmorphism in dark mode */
-[data-theme="dark"] .card,
+[data-theme="dark"] .card {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    background: rgba(44, 62, 80, 0.55);
+    border: 1px solid rgba(26, 188, 156, 0.08);
+}
+
 [data-theme="dark"] .project-card,
 [data-theme="dark"] .certification-card,
 [data-theme="dark"] .contact-info,
@@ -871,8 +898,23 @@ header .container {
 
 /* ── About Preview Section ── */
 .about-preview {
-    background: linear-gradient(180deg, var(--light-background) 0%, rgba(26,188,156,0.02) 100%);
+    background: transparent;
     padding: 100px 0;
+    position: relative;
+}
+
+.about-preview::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(26,188,156,0.03) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.about-preview .container {
+    position: relative;
+    z-index: 1;
 }
 
 .about-preview h2 {
