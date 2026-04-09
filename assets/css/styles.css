@@ -2041,6 +2041,13 @@ footer::before {
     transform: translateY(-3px);
 }
 
+.form-submit-error {
+    color: #e74c3c;
+    margin-top: 12px;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
 /* ── Card Link Styles ── */
 .card-link {
     text-decoration: none;
