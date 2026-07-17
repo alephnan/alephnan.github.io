@@ -876,7 +876,9 @@ li a:hover {
 
 @supports ((-webkit-text-stroke: 2px white)) {
     .hero-name-outline {
-        -webkit-text-stroke: 2px var(--text-hi);
+        /* Fluid stroke: ~1px at the mobile font floor, ~2px at desktop, so the
+           outline stays proportional instead of filling in the letters. */
+        -webkit-text-stroke: clamp(1px, 0.07vw + 0.73px, 2px) var(--text-hi);
         color: transparent;
     }
 }
