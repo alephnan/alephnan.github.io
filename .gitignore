@@ -33,3 +33,4 @@ docs/
 CLAUDE.md
 .claude/
 .codex
+.playwright-mcp

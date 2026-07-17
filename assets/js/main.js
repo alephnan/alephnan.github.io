@@ -4,23 +4,34 @@ document.addEventListener('DOMContentLoaded', function() {
     if (yearEl) yearEl.textContent = new Date().getFullYear();
 
     // Mobile navigation toggle
-    const hamburger = document.querySelector('.hamburger');
+    const navToggle = document.querySelector('.nav-toggle');
     const navLinks = document.querySelector('.nav-links');
 
-    if (hamburger) {
-        hamburger.addEventListener('click', function() {
-            navLinks.classList.toggle('active');
+    function closeNav() {
+        if (!navLinks || !navLinks.classList.contains('active')) return;
+        navLinks.classList.remove('active');
+        if (navToggle) navToggle.setAttribute('aria-expanded', 'false');
+    }
+
+    if (navToggle && navLinks) {
+        navToggle.addEventListener('click', function() {
+            const isOpen = navLinks.classList.toggle('active');
+            navToggle.setAttribute('aria-expanded', String(isOpen));
         });
     }
 
-    // Close mobile menu when clicking outside
+    // Close mobile menu when clicking outside or pressing Escape
     document.addEventListener('click', function(event) {
-        if (navLinks && navLinks.classList.contains('active') && !event.target.closest('nav')) {
-            navLinks.classList.remove('active');
+        if (navLinks && navLinks.classList.contains('active') && !event.target.closest('.site-header')) {
+            closeNav();
         }
     });
 
-    // Active page indicator
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') closeNav();
+    });
+
+    // Active page indicator (fallback for hardcoded aria-current)
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
     document.querySelectorAll('.nav-links a').forEach(function(link) {
         if (link.getAttribute('href') === currentPage) {
@@ -28,48 +39,15 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Add theme toggle button to the body
-    const themeToggle = document.createElement('div');
-    themeToggle.className = 'theme-toggle';
-    themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-    document.body.appendChild(themeToggle);
-
-    // Check for saved theme preference or use device preference
-    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-    const currentTheme = localStorage.getItem('theme');
-
-    if (currentTheme === 'light' || (!currentTheme && !prefersDarkScheme.matches)) {
-        // User explicitly chose light, or OS prefers light — stay light
-    } else {
-        // Default to dark
-        document.documentElement.setAttribute('data-theme', 'dark');
-        themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+    // Live UTC clock (index hero)
+    const clockEl = document.querySelector('[data-utc-clock]');
+    if (clockEl) {
+        function tickClock() {
+            clockEl.textContent = new Date().toISOString().slice(11, 19);
+        }
+        tickClock();
+        setInterval(tickClock, 1000);
     }
-
-    // Theme toggle functionality
-    themeToggle.addEventListener('click', function() {
-        let theme = 'light';
-
-        if (document.documentElement.getAttribute('data-theme') !== 'dark') {
-            document.documentElement.setAttribute('data-theme', 'dark');
-            theme = 'dark';
-            this.innerHTML = '<i class="fas fa-sun"></i>';
-        } else {
-            document.documentElement.removeAttribute('data-theme');
-            this.innerHTML = '<i class="fas fa-moon"></i>';
-        }
-
-        localStorage.setItem('theme', theme);
-
-        // Reinitialize particles with new colors
-        var particlesContainer = document.getElementById('particles-js');
-        if (particlesContainer) {
-            particlesContainer.innerHTML = '';
-            setTimeout(function() {
-                initParticles();
-            }, 100);
-        }
-    });
 
     // Initialize tsParticles
     setTimeout(function() {
@@ -110,32 +88,29 @@ document.addEventListener('DOMContentLoaded', function() {
             revealObserver.observe(el);
         });
     }
-
-    // Generate CSRF token for forms
-    generateCSRFToken();
 });
 
 function initParticles() {
     var particlesContainer = document.getElementById('particles-js');
     if (!particlesContainer) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-    var isDarkTheme = document.documentElement.getAttribute('data-theme') === 'dark';
-    var particleColor = isDarkTheme ? '#1ABC9C' : '#0F1C2E';
-    var lineColor = isDarkTheme ? '#1ABC9C' : '#0F1C2E';
+    var accent = getComputedStyle(document.documentElement)
+        .getPropertyValue('--accent').trim() || '#1ABC9C';
 
     try {
         tsParticles.load('particles-js', {
             fpsLimit: 60,
             particles: {
                 number: {
-                    value: 150,
+                    value: 123,
                     density: {
                         enable: true,
-                        value_area: 800
+                        value_area: 700
                     }
                 },
                 color: {
-                    value: particleColor
+                    value: accent
                 },
                 shape: {
                     type: 'circle'
@@ -157,14 +132,14 @@ function initParticles() {
                 },
                 links: {
                     enable: true,
-                    distance: 120,
-                    color: lineColor,
-                    opacity: 0.2,
+                    distance: 130,
+                    color: accent,
+                    opacity: 0.1,
                     width: 1
                 },
                 move: {
                     enable: true,
-                    speed: 0.8,
+                    speed: 0.7,
                     direction: 'none',
                     random: true,
                     straight: false,
@@ -175,15 +150,11 @@ function initParticles() {
                 }
             },
             interactivity: {
-                detectsOn: 'canvas',
+                detectsOn: 'window',
                 events: {
                     onHover: {
                         enable: true,
                         mode: 'grab'
-                    },
-                    onClick: {
-                        enable: true,
-                        mode: 'push'
                     },
                     resize: true
                 },
@@ -191,11 +162,8 @@ function initParticles() {
                     grab: {
                         distance: 140,
                         links: {
-                            opacity: 0.6
+                            opacity: 0.5
                         }
-                    },
-                    push: {
-                        quantity: 3
                     }
                 }
             },
@@ -204,22 +172,4 @@ function initParticles() {
     } catch (error) {
         console.error('Error initializing particles:', error);
     }
-}
-
-// Generate CSRF token for form protection
-function generateCSRFToken() {
-    var forms = document.querySelectorAll('form');
-
-    forms.forEach(function(form) {
-        if (form.action && form.action.includes('formsubmit.co')) return;
-
-        var csrfInput = form.querySelector('input[name="_csrf"]');
-        if (csrfInput) {
-            var token = Math.random().toString(36).substring(2, 15) +
-                        Math.random().toString(36).substring(2, 15) +
-                        Date.now().toString(36);
-            csrfInput.value = token;
-            sessionStorage.setItem('csrf_token', token);
-        }
-    });
 }
