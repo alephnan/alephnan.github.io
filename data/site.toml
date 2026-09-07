@@ -4,27 +4,27 @@ contact_order = ["email", "linkedin", "github", "tryhackme"]
 [[navigation]]
 key = "index"
 label = "Index"
-path = "/"
+content = "@/_index.md"
 
 [[navigation]]
 key = "resume"
 label = "Resume"
-path = "/resume/"
+content = "@/resume.md"
 
 [[navigation]]
 key = "projects"
 label = "Projects"
-path = "/projects/"
+content = "@/projects.md"
 
 [[navigation]]
 key = "certifications"
 label = "Certs"
-path = "/certifications/"
+content = "@/certifications.md"
 
 [[navigation]]
 key = "contact"
 label = "Contact"
-path = "/contact/"
+content = "@/contact.md"
 
 [social.linkedin]
 label = "LinkedIn"

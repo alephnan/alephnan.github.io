@@ -1,10 +1,10 @@
-{% set site = load_data(path="data/site.toml") %}
+{% set site = load_data(path="data/site.toml") -%}
 {% set active_nav = "" %}
 {% if page is defined %}
     {% set active_nav = page.extra.nav %}
 {% elif section is defined %}
     {% set active_nav = section.extra.nav %}
-{% endif %}
+{% endif -%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,7 +24,7 @@
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
     <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net 'unsafe-inline'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'{% if active_nav == 'contact' %} https://formsubmit.co{% endif %}; frame-src 'self' https://formsubmit.co; {% if active_nav == 'contact' %}form-action 'self' https://formsubmit.co; {% endif %}object-src 'none'">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net 'unsafe-inline'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'{% if config.mode == 'serve' %} ws://127.0.0.1:* ws://localhost:*{% endif %}{% if active_nav == 'contact' %} https://formsubmit.co{% endif %}; frame-src 'self' https://formsubmit.co; {% if active_nav == 'contact' %}form-action 'self' https://formsubmit.co; {% endif %}object-src 'none'">
 </head>
 <body>
     <a class="skip-link" href="#main">Skip to content</a>

@@ -31,14 +31,6 @@ document.addEventListener('DOMContentLoaded', function() {
         if (event.key === 'Escape') closeNav();
     });
 
-    // Active page indicator (fallback for hardcoded aria-current)
-    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-    document.querySelectorAll('.nav-links a').forEach(function(link) {
-        if (link.getAttribute('href') === currentPage) {
-            link.classList.add('nav-active');
-        }
-    });
-
     // Live UTC clock (index hero)
     const clockEl = document.querySelector('[data-utc-clock]');
     if (clockEl) {
