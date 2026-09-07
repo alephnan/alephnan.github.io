@@ -82,20 +82,20 @@ The homepage remains available at `/` and `/index.html`. Other pages use `/resum
 
 The contact form retains its existing endpoint, CAPTCHA, honeypot, and validation. Its success destination is generated from the thank-you page and shared by native and localhost submission paths. Local interactive previews still use the real form service when a visitor submits; automated tests intercept it. Live delivery/CAPTCHA service behavior is outside automated verification.
 
-## Local migration and eventual release
+## Deploy
 
-Migration work is committed locally on `migration/zola` in separate stages. No push, deployment, or Pages settings change is part of the local migration.
+GitHub Pages uses **GitHub Actions** to publish the generated `public/` artifact. Source files and generated test artifacts are not part of the deployed site.
 
 The verification workflow checks pull requests, pushes to `main`, and manual runs. The separate **Release portfolio** workflow is manual, accepts only `main`, and reuses verification before uploading and deploying the production artifact.
 
-The inspected pre-migration Pages configuration publishes the root of `main` using legacy branch publishing. For a later authorized release:
+For each release:
 
-1. Review the local commits and passing checks, then authorize pushing/reviewing the migration branch.
-2. Change Pages' build source to **GitHub Actions** before merging the migration, so legacy publishing cannot expose the new source tree.
-3. Merge the reviewed commits into `main` and manually run **Release portfolio**. Its build must pass every verification check before deployment.
-4. Check the live homepage, native and legacy URLs, a resume fragment, the PDF, and a nested unknown URL. Do not send a contact message as part of release checks without explicit authorization.
+1. Push the changes for review and ensure verification passes.
+2. Merge the reviewed commits into `main`.
+3. Run **Release portfolio** from the Actions tab, or use `gh workflow run deploy.yml --ref main`. Its build must pass every verification check before deployment.
+4. Check the live homepage, native and legacy URLs, a resume fragment, the PDF, and a nested unknown URL. Contact delivery should be tested only with an intentional, authorized submission.
 
-Rollback requires restoring the previous source revision on the publishing branch and returning Pages to legacy publishing from `main` at `/`. The original source is retained in Git history; generated output is never committed. Do not switch hosting back to legacy mode while `main` still contains the Zola source layout.
+To roll back a Zola release, revert the relevant changes on `main` and run the release workflow again. Restoring the pre-migration site requires restoring revision `ec40b0eea46d07c20c122c283fa5043cd0fec2ac` on the publishing branch and returning Pages to legacy publishing from `main` at `/`. Do not switch hosting back to legacy mode while `main` still contains the Zola source layout.
 
 ## License
 
