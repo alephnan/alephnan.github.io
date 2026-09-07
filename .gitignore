@@ -34,3 +34,11 @@ CLAUDE.md
 .claude/
 .codex
 .playwright-mcp
+
+# Zola and development tools
+public/
+node_modules/
+test-results/
+playwright-report/
+.reference/
+.tools/

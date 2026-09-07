@@ -1,0 +1,3 @@
+/* Only the random canvas is excluded; motion is exercised separately. */
+#particles-js, #particles-js canvas { display: none !important; }
+html { scroll-behavior: auto !important; }
