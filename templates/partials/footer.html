@@ -1,29 +1,29 @@
 <footer class="site-footer">
-        <div class="ticker">
-            <div class="ticker-track">
-                {% for copy in range(end=2) %}
-                <div class="ticker-seq"{% if copy == 1 %} aria-hidden="true"{% endif %}>
-                    {% include "partials/ticker-items.html" %}
-                </div>
-                {% endfor %}
+    <div class="ticker">
+        <div class="ticker-track">
+            {% for copy in range(end=2) %}
+            <div class="ticker-seq"{% if copy == 1 %} aria-hidden="true"{% endif %}>
+                {% include "partials/ticker-items.html" %}
             </div>
+            {% endfor %}
         </div>
-        <div class="footer-inner">
-            <div>
-                <p class="footer-name">Rafael Guevara Hernández</p>
-                <p class="footer-role">Cybersecurity Engineer</p>
-            </div>
-            <div class="social-links">
-                {% for key in site.footer_order %}
-                {% set link = site.social[key] %}
-                <a href="{{ link.url }}" aria-label="{{ link.label }}">
-                    {{<icon name={key} />}}
-                </a>
-                {% endfor %}
-            </div>
+    </div>
+    <div class="footer-inner">
+        <div>
+            <p class="footer-name">Rafael Guevara Hernández</p>
+            <p class="footer-role">Cybersecurity Engineer</p>
         </div>
-        <div class="footer-meta">
-            <p>&copy; <span id="current-year">2026</span> Rafael Guevara Hernández &dash; All rights reserved</p>
-            <p>SYS//STATIC &middot; NO TRACKERS</p>
+        <div class="social-links">
+            {% for key in site.footer_order %}
+            {% set link = site.social[key] %}
+            <a href="{{ link.url }}" aria-label="{{ link.label }}">
+                {{<icon name={key} />}}
+            </a>
+            {% endfor %}
         </div>
-    </footer>
+    </div>
+    <div class="footer-meta">
+        <p>&copy; <span id="current-year">2026</span> Rafael Guevara Hernández &dash; All rights reserved</p>
+        <p>SYS//STATIC &middot; NO TRACKERS</p>
+    </div>
+</footer>

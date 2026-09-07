@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+{% set capabilities = load_data(path="data/capabilities.toml") %}
 <section class="hero">
     <div class="container hero-frame">
         <p class="hud-corner hud-tl">SEC.OPS//PORTFOLIO</p>
@@ -42,11 +43,10 @@
     <div class="container">
         <div class="section-head">
             <h2 class="section-title">Capabilities</h2>
-            <p class="console-note">3 modules loaded</p>
+            <p class="console-note">{{ capabilities.modules | length }} modules loaded</p>
         </div>
         <div class="module-grid">
-            {% set data = load_data(path="data/capabilities.toml") %}
-        {% for module in data.modules %}
+            {% for module in capabilities.modules %}
         <a href="{{ get_url(path=module.content) }}" class="module-card corner-ticks" data-reveal="fade-up"{% if module.delay %} data-reveal-delay="{{ module.delay }}"{% endif %}>
             <p class="hud-label">{{ module.label }}</p>
             <h3>{{ module.title }}</h3>

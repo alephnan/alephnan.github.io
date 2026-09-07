@@ -1,8 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
+{% set data = load_data(path="data/projects.toml") %}
 {% <page_header breadcrumb="FILE://PROJECTS" title="R&D Index"> %}
-    <p class="console-note">7 repositories tracked</p>
+    <p class="console-note">{{ data.projects | length }} repositories tracked</p>
 {% </page_header> %}
 
 <section class="section">
@@ -12,7 +13,6 @@
             <p>Here are some of my notable projects spanning cybersecurity, scientific visualization, and quantum computing. My work explores threat intelligence, security automation, GPU-powered simulations, and quantum algorithms.</p>
         </div>
 
-        {% set data = load_data(path="data/projects.toml") %}
         {% for project in data.projects %}{% if project.featured %}
         {{<project_card project />}}
         {% endif %}{% endfor %}

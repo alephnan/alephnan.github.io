@@ -1,9 +1,9 @@
 {% set site = load_data(path="data/site.toml") -%}
-{% set active_nav = "" %}
-{% if page is defined %}
-    {% set active_nav = page.extra.nav %}
-{% elif section is defined %}
-    {% set active_nav = section.extra.nav %}
+{% set active_nav = "" -%}
+{% if page is defined -%}
+    {% set active_nav = page.extra.nav -%}
+{% elif section is defined -%}
+    {% set active_nav = section.extra.nav -%}
 {% endif -%}
 <!DOCTYPE html>
 <html lang="en">
