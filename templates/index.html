@@ -45,25 +45,16 @@
             <p class="console-note">3 modules loaded</p>
         </div>
         <div class="module-grid">
-            <a href="{{ get_url(path="/resume/") }}" class="module-card corner-ticks" data-reveal="fade-up">
-                <p class="hud-label">MOD//DEFENSE</p>
-                <h3>Cybersecurity</h3>
-                <p class="module-desc">Intrusion detection, malware analysis, and AI-powered security automation</p>
-                <span class="module-cta" aria-hidden="true">&#8594;</span>
-            </a>
-            <a href="{{ get_url(path="/certifications/") }}" class="module-card corner-ticks" data-reveal="fade-up" data-reveal-delay="100">
-                <p class="hud-label">MOD//CREDENTIALS</p>
-                <h3>Certifications</h3>
-                <p class="module-desc">Palo Alto, TryHackMe, and Fortinet certifications</p>
-                <span class="module-cta" aria-hidden="true">&#8594;</span>
-            </a>
-            <a href="{{ get_url(path="/projects/") }}" class="module-card corner-ticks" data-reveal="fade-up" data-reveal-delay="200">
-                <p class="hud-label">MOD//R&amp;D</p>
-                <h3>Projects</h3>
-                <p class="module-desc">MCP servers, AI pipelines, and open-source security tools</p>
-                <span class="module-cta" aria-hidden="true">&#8594;</span>
-            </a>
-        </div>
+            {% set data = load_data(path="data/capabilities.toml") %}
+        {% for module in data.modules %}
+        <a href="{{ get_url(path=module.content) }}" class="module-card corner-ticks" data-reveal="fade-up"{% if module.delay %} data-reveal-delay="{{ module.delay }}"{% endif %}>
+            <p class="hud-label">{{ module.label }}</p>
+            <h3>{{ module.title }}</h3>
+            <p class="module-desc">{{ module.description }}</p>
+            <span class="module-cta" aria-hidden="true">&#8594;</span>
+        </a>
+        {% endfor %}
+    </div>
     </div>
 </section>
 

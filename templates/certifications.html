@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% <page_header breadcrumb="FILE://CERTS" title="Certifications"> %}
+    <p class="console-note">Credential verification board</p>
+{% </page_header> %}
+
+<section class="section">
+    <div class="container">
+        <h2 class="visually-hidden">Credential ledger</h2>
+        <div class="cert-grid">
+
+            {% set data = load_data(path="data/credentials.toml") %}
+            {% for group in data.groups %}
+            {{<credential_card group />}}
+            {% endfor %}
+
+            <!-- TryHackMe Rankings -->
+            <article class="cert-card corner-ticks" data-reveal="fade-up" data-reveal-delay="100">
+                <div class="cert-head">
+                    <div class="cert-logo">
+                        <img src="{{ get_url(path="assets/images/TryhackmeLogoSmall.png") }}" alt="TryHackMe badge">
+                    </div>
+                    <div>
+                        <h3>TryHackMe Rankings</h3>
+                        <p class="cert-issuer">Leaderboard status</p>
+                    </div>
+                </div>
+                <p class="cert-rank-figure">#1</p>
+                <p class="cert-rank-context">MX NATIONAL &middot; <em>#122 GLOBAL</em> &middot; TOP 1% &middot; ACHIEVED 2024 &middot; alephNaN</p>
+                <a href="https://tryhackme.com/leaderboards" class="btn btn-small" target="_blank" rel="noopener">View Leaderboards <span aria-hidden="true">&#8599;</span></a>
+            </article>
+        </div>
+    </div>
+</section>
+{% endblock content %}

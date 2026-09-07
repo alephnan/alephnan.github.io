@@ -1,0 +1,20 @@
+[[modules]]
+content = "@/resume.md"
+label = "MOD//DEFENSE"
+title = "Cybersecurity"
+description = "Intrusion detection, malware analysis, and AI-powered security automation"
+delay = 0
+
+[[modules]]
+content = "@/certifications.md"
+label = "MOD//CREDENTIALS"
+title = "Certifications"
+description = "Palo Alto, TryHackMe, and Fortinet certifications"
+delay = 100
+
+[[modules]]
+content = "@/projects.md"
+label = "MOD//R&D"
+title = "Projects"
+description = "MCP servers, AI pipelines, and open-source security tools"
+delay = 200

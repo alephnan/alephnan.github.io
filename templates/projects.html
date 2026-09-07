@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% <page_header breadcrumb="FILE://PROJECTS" title="R&D Index"> %}
+    <p class="console-note">7 repositories tracked</p>
+{% </page_header> %}
+
+<section class="section">
+    <div class="container">
+        <h2 class="visually-hidden">Project repositories</h2>
+        <div class="projects-intro" data-reveal="fade-up">
+            <p>Here are some of my notable projects spanning cybersecurity, scientific visualization, and quantum computing. My work explores threat intelligence, security automation, GPU-powered simulations, and quantum algorithms.</p>
+        </div>
+
+        {% set data = load_data(path="data/projects.toml") %}
+        {% for project in data.projects %}{% if project.featured %}
+        {{<project_card project />}}
+        {% endif %}{% endfor %}
+        <div class="projects-grid">
+            {% for project in data.projects %}{% if not project.featured %}
+            {{<project_card project />}}
+            {% endif %}{% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock content %}

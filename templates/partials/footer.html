@@ -14,9 +14,10 @@
                 <p class="footer-role">Cybersecurity Engineer</p>
             </div>
             <div class="social-links">
-                {% for link in site.social %}
+                {% for key in site.footer_order %}
+                {% set link = site.social[key] %}
                 <a href="{{ link.url }}" aria-label="{{ link.label }}">
-                    {{<icon name={link.key} />}}
+                    {{<icon name={key} />}}
                 </a>
                 {% endfor %}
             </div>

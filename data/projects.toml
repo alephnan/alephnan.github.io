@@ -1,0 +1,123 @@
+[[projects]]
+title = "Flowfield ‐ Strange Attractor Visualizer"
+label = "/flowfield"
+meta = "Type: WebGPU · Lang: TypeScript · Lib: Three.js"
+description = "A GPU-powered visualizer that animates up to one million particles across nine chaotic dynamical systems, with a WebGL2 fallback for broader browser support."
+image = "assets/images/Flowfield-tool-card.png"
+alt = "Flowfield strange attractor visualization"
+featured = true
+experimental = false
+delay = 0
+tags = ["Scientific Visualization", "WebGPU", "Three.js", "TypeScript"]
+
+[[projects.links]]
+url = "https://alephnan.github.io/flowfield/"
+label = "Live Demo"
+primary = true
+
+[[projects.links]]
+url = "https://github.com/alephnan/flowfield"
+label = "Repository"
+primary = false
+
+[[projects]]
+title = "MCP Virus Total Server"
+label = "/MCP-VirusTotal"
+meta = "Threat Intelligence · MCP Server"
+description = "An MCP (Model Context Protocol) server that provides threat intelligence lookups against VirusTotal."
+image = "assets/images/MCP-VT-tool-card.jpg"
+alt = "MCP Virus Total Server"
+featured = false
+experimental = false
+delay = 0
+tags = ["Threat Intelligence", "VirusTotal", "MCP", "Automation"]
+
+[[projects.links]]
+url = "https://github.com/alephnan/MCP-VirusTotal"
+label = "Repository"
+primary = false
+
+[[projects]]
+title = "PE Malware Analyzer"
+label = "/Malware_PE_analyzer"
+meta = "Python · Offline Analysis"
+description = "A Python tool for static analysis of Windows PE files. Generates detailed HTML reports, performs YARA scanning and works completely offline."
+image = "assets/images/malware-analysis-card.jpg"
+alt = "PE Malware Analyzer"
+featured = false
+experimental = false
+delay = 100
+tags = ["Malware Analysis", "PE Files", "YARA", "Python"]
+
+[[projects.links]]
+url = "https://github.com/alephnan/Malware_PE_analyzer"
+label = "Repository"
+primary = false
+
+[[projects]]
+title = "MCP AbuseIPDB Server"
+label = "/AbuseIPDB-MCP"
+meta = "Python · MCP Server"
+description = "An MCP (Model Context Protocol) server that provides threat intelligence lookups against the AbuseIPDB database."
+image = "assets/images/MCP-AbuseIPDB-tool-card.jpg"
+alt = "MCP AbuseIPDB Server"
+featured = false
+experimental = false
+delay = 0
+tags = ["Threat Intelligence", "AbuseIPDB", "MCP", "Python"]
+
+[[projects.links]]
+url = "https://github.com/alephnan/AbuseIPDB-MCP"
+label = "Repository"
+primary = false
+
+[[projects]]
+title = "XDR IOC Uploader"
+label = "/CortexXDR-IoC-Uploader"
+meta = "Python · CLI Tool"
+description = "CLI tool to validate and upload IOC CSV/JSON files to Cortex XDR."
+image = "assets/images/IoC-tool-card.jpg"
+alt = "XDR IOC Uploader"
+featured = false
+experimental = false
+delay = 100
+tags = ["Cortex XDR", "Automation", "Threat Hunting", "Python"]
+
+[[projects.links]]
+url = "https://github.com/alephnan/CortexXDR-IoC-Uploader"
+label = "Repository"
+primary = false
+
+[[projects]]
+title = "Quantum Random Number Generator"
+label = "/QuantumRand"
+meta = "Python · Qiskit · Flask"
+description = "A quantum random number generator using Qiskit and a web interface built with Flask, the project that implements a Quantum Random Number Generator (QRNG) using Qiskit and compares it with classical random number generation using Python's built-in random module."
+image = "assets/images/quantum-algorithm-card-2.png"
+alt = "Quantum Random Number Generator"
+featured = false
+experimental = true
+delay = 0
+tags = ["Quantum Computing", "Python", "Automation"]
+
+[[projects.links]]
+url = "https://github.com/alephnan/QuantumRand"
+label = "Repository"
+primary = false
+
+[[projects]]
+title = "Grover's Algorithm"
+label = "/GroverAlgorithm"
+meta = "Python · Jupyter Notebook"
+description = "Grover's Algorithm using Qiskit, focusing on performance optimization. The implementation demonstrates quantum speedup for unstructured search problems and is validated on simulators."
+image = "assets/images/quantum-algorithm-card-1.png"
+alt = "Grover's Algorithm"
+featured = false
+experimental = true
+delay = 100
+tags = ["Quantum Computing", "Python", "Quantum Algorithms"]
+
+[[projects.links]]
+url = "https://github.com/alephnan/GroverAlgorithm"
+label = "Repository"
+primary = false

@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% set resume = load_data(path="data/resume.toml") %}
+{% <page_header breadcrumb="FILE://RESUME" title="Resume"> %}
+    <a href="{{ get_url(path="assets/files/Rafael_Guevara_Resume.pdf") }}" class="btn btn-primary" download>Export PDF <span aria-hidden="true">&#8595;</span></a>
+{% </page_header> %}
+
+<section class="section">
+    <div class="container">
+        <div class="resume-sheet corner-ticks" data-reveal="fade-up">
+            <nav class="resume-rail" aria-label="Resume sections">
+                <ul class="resume-rail-list">
+                    <li><a href="#summary">Summary</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#achievements">Achievements</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#certifications">Certs</a></li>
+                    <li><a href="#interests">Interests</a></li>
+                </ul>
+            </nav>
+
+            <div class="resume-body">
+                <div class="resume-intro">
+                    <h2 class="resume-name">Rafael Guevara Hernandez</h2>
+                    <p class="resume-tagline">Cybersecurity Engineer | Threat Intelligence &amp; Incident Response</p>
+                    <ul class="resume-contact">
+                        <li><a href="tel:+524422876755">(+52) 442 287 6755</a></li>
+                        <li><a href="mailto:rafagh00@gmail.com">rafagh00@gmail.com</a></li>
+                        <li><a href="https://www.linkedin.com/in/rafael-g-17236b221">LinkedIn</a></li>
+                        <li><a href="https://github.com/alephnan">GitHub</a></li>
+                        <li>Mexico City</li>
+                    </ul>
+                </div>
+
+                <div class="resume-section" id="summary">
+                    <h3>Professional Summary</h3>
+                    <p>Cybersecurity Specialist with 3+ years in threat analysis, incident response, and SOC operations. Applied Mathematics background with strong analytical skills. Experienced in threat intelligence, automating security workflows with Python and AI-driven tools, and communicating findings to technical and executive stakeholders.</p>
+                </div>
+
+                <div class="resume-section" id="skills">
+                    <h3>Technical Skills</h3>
+                    <table class="resume-skills-table">
+                {% for row in resume.skills %}<tr><th>{{ row.label }}</th><td>{{ row.value }}</td></tr>{% endfor %}
+            </table>
+                </div>
+
+                <div class="resume-section" id="experience">
+                    <h3>Professional Experience</h3>
+                    <div class="resume-entry">
+                        <div class="resume-entry-header">
+                            <h4>Senior Cybersecurity Engineer <span class="resume-entry-subtitle">(Security Services Analytics III)</span> <span class="chip-active">Active</span></h4>
+                            <span class="resume-entry-meta">Scitum &dash; Mexico City | April 2024 &ndash; Present</span>
+                        </div>
+                        <ul class="resume-bullets">
+                            <li>Lead end-to-end security incident analysis and response across enterprise environments, using Cortex XDR and other detection platforms to identify, contain, and remediate threats.</li>
+                            <li>Design and deploy AI-powered automation pipelines (Python, LLMs) to accelerate threat analysis, incident triage, and security reporting &ndash; reducing analyst workload and mean time to response.</li>
+                            <li>Develop Python scripts integrating security tools via APIs for automated alert correlation and enrichment.</li>
+                            <li>Collaborate cross-functionally with engineering teams to refine detection rules and firewall policies.</li>
+                        </ul>
+                    </div>
+                    <div class="resume-entry">
+                        <div class="resume-entry-header">
+                            <h4>Cybersecurity Intrusion Specialist &ndash; Advanced Threats</h4>
+                            <span class="resume-entry-meta">Scitum &dash; Mexico City | March 2023 &ndash; March 2024</span>
+                        </div>
+                        <ul class="resume-bullets">
+                            <li>Analyzed threat event data and evaluated malicious activity across enterprise environments using Cortex XDR and SIEM platforms, triaging and responding to advanced security incidents.</li>
+                            <li>Used threat intelligence platforms to enrich investigations and support defensive decision-making.</li>
+                            <li>Conducted static and dynamic malware analysis to understand threat behavior and develop effective countermeasures and IOC extraction.</li>
+                        </ul>
+                    </div>
+                    <div class="resume-entry">
+                        <div class="resume-entry-header">
+                            <h4>Jr. SOC Engineer</h4>
+                            <span class="resume-entry-meta">Scitum &dash; Mexico City | January 2023 &ndash; March 2023</span>
+                        </div>
+                        <ul class="resume-bullets">
+                            <li>Monitored and triaged security alerts via Splunk and FortiSIEM; ensured timely escalation and documentation.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="resume-section" id="achievements">
+                    <h3>Key Achievements &amp; Projects</h3>
+                    <div class="resume-entry">
+                        <div class="resume-entry-header">
+                            <h4>TryHackMe &ndash; #1 in Mexico</h4>
+                            <span class="resume-entry-meta">2024</span>
+                        </div>
+                        <p>Ranked #1 in Mexico, Top 1% globally. Paths: Red Teaming, Offensive Pentesting, SOC L1/L2.</p>
+                    </div>
+                    <div class="resume-entry">
+                        <div class="resume-entry-header">
+                            <h4>Open-Source Security Tooling</h4>
+                            <span class="resume-entry-meta">2024 &ndash; 2025</span>
+                        </div>
+                        <p>Built MCP server integrations for AbuseIPDB and VirusTotal (<a href="https://github.com/alephnan">github.com/alephnan</a>), enabling automated IOC reputation lookups and threat enrichment workflows.</p>
+                    </div>
+                    <div class="resume-entry">
+                        <div class="resume-entry-header">
+                            <h4>AI-Driven Threat Triage Pipeline</h4>
+                            <span class="resume-entry-meta">2025</span>
+                        </div>
+                        <p>Architected a multi-agent AI system for automated incident triage, runbook extraction, and SOAR payload construction.</p>
+                    </div>
+                </div>
+
+                <div class="resume-section" id="education">
+                    <h3>Education</h3>
+                    <div class="resume-entry">
+                        <div class="resume-entry-header">
+                            <h4>Instituto Tecnol&oacute;gico Aut&oacute;nomo de M&eacute;xico (ITAM)</h4>
+                            <span class="resume-entry-meta">2018 &ndash; 2023</span>
+                        </div>
+                        <p>B.S. in Applied Mathematics &nbsp;|&nbsp; Cryptography, Dynamical Systems, Probability</p>
+                    </div>
+                </div>
+
+                <div class="resume-section" id="certifications">
+                    <h3>Certifications</h3>
+                    <ul class="resume-bullets">
+                        <li><strong>Palo Alto Networks:</strong> Cortex XDR Consultant (PMXdC), Cortex XDR Support Engineer.</li>
+                        <li><strong>Fortinet:</strong> NSE Level 1&ndash;3. &nbsp;<strong>TryHackMe:</strong> Red Teaming, Offensive Pentesting, SOC L1&amp;2, Cyber Defense, Security Engineer, Web Fundamentals.</li>
+                    </ul>
+                </div>
+
+                <div class="resume-section" id="interests">
+                    <h3>Interests &dash; AI/ML Security &amp; Research</h3>
+                    <table class="resume-skills-table">
+                {% for row in resume.interests %}<tr><th>{{ row.label }}</th><td>{{ row.value }}</td></tr>{% endfor %}
+            </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

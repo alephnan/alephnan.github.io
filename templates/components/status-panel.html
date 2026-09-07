@@ -1,0 +1,13 @@
+{% component status_panel(code: string, label: string, title: string, description: string, amber: bool = false) %}
+<section class="status-page">
+    <div class="container">
+        <div class="status-panel corner-ticks">
+            <p class="status-figure{% if amber %} status-figure-amber{% endif %}">{{ code }}</p>
+            <p class="status-code">{{ label }}</p>
+            <h1>{{ title }}</h1>
+            <p class="status-desc">{{ description }}</p>
+            <a href="{{ get_url(path="@/_index.md") }}" class="btn btn-primary">Return to Index <span aria-hidden="true">&#8594;</span></a>
+        </div>
+    </div>
+</section>
+{% endcomponent status_panel %}

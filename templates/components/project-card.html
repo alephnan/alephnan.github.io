@@ -1,0 +1,21 @@
+{% component project_card(project: map) %}
+<article class="{% if project.featured %}project-feature corner-ticks{% else %}project-card{% endif %}" data-reveal="fade-up"{% if project.delay %} data-reveal-delay="{{ project.delay }}"{% endif %}>
+    <div class="project-image scanlines">
+        <img src="{{ get_url(path=project.image) }}" alt="{{ project.alt }}"{% if not project.featured %} loading="lazy"{% endif %}>
+    </div>
+    <div class="project-details">
+        <p class="hud-label">{{ project.label }}{% if project.experimental %} <span class="chip chip-amber">Experimental</span>{% endif %}</p>
+        <h3>{{ project.title }}</h3>
+        <p class="project-meta">{{ project.meta }}</p>
+        <p class="project-desc">{{ project.description }}</p>
+        <div class="project-tags">
+            {% for tag in project.tags %}<span>{{ tag }}</span>{% endfor %}
+        </div>
+        <div class="project-links">
+            {% for link in project.links %}
+            <a href="{{ link.url }}" class="btn {% if link.primary %}btn-primary {% endif %}btn-small" target="_blank" rel="noopener">{{ link.label }} <span aria-hidden="true">&#8599;</span></a>
+            {% endfor %}
+        </div>
+    </div>
+</article>
+{% endcomponent project_card %}

@@ -1,0 +1,11 @@
+{% component page_header(breadcrumb: string, title: string) %}
+<section class="console-strip">
+    <div class="container">
+        <p class="console-breadcrumb">{{ breadcrumb }}</p>
+        <div class="console-row">
+            <h1 class="page-title">{{ title }}</h1>
+            {{ body }}
+        </div>
+    </div>
+</section>
+{% endcomponent page_header %}

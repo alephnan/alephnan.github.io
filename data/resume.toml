@@ -1,0 +1,35 @@
+[[skills]]
+label = "Security Tools"
+value = "Cortex XDR/XSIAM (Palo Alto), Splunk, Panorama, Burp Suite, Metasploit, Nmap."
+
+[[skills]]
+label = "Network Protocols"
+value = "TCP/IP, DNS, HTTP/S, DHCP, ARP, ICMP, SNMP; packet analysis and inspection."
+
+[[skills]]
+label = "Frameworks"
+value = "MITRE ATT&CK, Cyber Kill Chain, OWASP Top 10, Zero Trust Architecture."
+
+[[skills]]
+label = "Programming"
+value = "Python (Advanced), Bash, SQL, Java; REST API integration and workflow automation."
+
+[[skills]]
+label = "AI & Automation"
+value = "LLM-powered threat analysis, RAG architectures, agentic security workflows."
+
+[[skills]]
+label = "Languages"
+value = "Spanish (Native), English (IELTS 7/9 – Proficient)."
+
+[[interests]]
+label = "AI Research"
+value = "Agentic workflows, coherence preservation, long-task orchestration, prompt engineering, LLM red-teaming."
+
+[[interests]]
+label = "AI Frameworks"
+value = "LangChain, AWS Amazon Bedrock, Ollama, Strands; MCP server development."
+
+[[interests]]
+label = "AI-Driven Security"
+value = "Automated threat detection, incident response automation, intelligent SOC workflows."
