@@ -2,7 +2,7 @@ import { createServer } from 'node:http';
 import { readFile, stat } from 'node:fs/promises';
 import { resolve, extname, sep } from 'node:path';
 
-const root = resolve(process.env.SITE_ROOT || '.');
+const root = resolve(process.env.SITE_ROOT || '.tools/test-site');
 const types = {
   '.html': 'text/html; charset=utf-8', '.css': 'text/css',
   '.js': 'text/javascript', '.png': 'image/png', '.jpg': 'image/jpeg',
