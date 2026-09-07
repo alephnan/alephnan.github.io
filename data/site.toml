@@ -1,0 +1,48 @@
+[[navigation]]
+key = "index"
+label = "Index"
+path = "/"
+
+[[navigation]]
+key = "resume"
+label = "Resume"
+path = "/resume/"
+
+[[navigation]]
+key = "projects"
+label = "Projects"
+path = "/projects/"
+
+[[navigation]]
+key = "certifications"
+label = "Certs"
+path = "/certifications/"
+
+[[navigation]]
+key = "contact"
+label = "Contact"
+path = "/contact/"
+
+[[social]]
+key = "linkedin"
+label = "LinkedIn"
+url = "https://www.linkedin.com/in/rafael-g-17236b221"
+display = "linkedin.com/in/rafael-g-17236b221"
+
+[[social]]
+key = "github"
+label = "GitHub"
+url = "https://github.com/alephnan"
+display = "github.com/alephnan"
+
+[[social]]
+key = "tryhackme"
+label = "TryHackMe"
+url = "https://tryhackme.com/p/alephNaN"
+display = "tryhackme.com/p/alephNaN"
+
+[[social]]
+key = "email"
+label = "Email"
+url = "mailto:rafagh00@gmail.com"
+display = "mailto:rafagh00@gmail.com"

@@ -1,0 +1,17 @@
+<header class="site-header">
+        <div class="header-inner">
+            <a href="{{ get_url(path="/") }}" class="wordmark">RGH<span class="wordmark-cursor" aria-hidden="true">&#9612;</span></a>
+            <nav aria-label="Main">
+                <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-links" id="site-nav">
+                    {% for item in site.navigation %}
+                    <li><a href="{{ get_url(path=item.path) }}"{% if item.key == active_nav %} aria-current="page"{% endif %}>{{ item.label }}</a></li>
+                    {% endfor %}
+                </ul>
+            </nav>
+        </div>
+    </header>

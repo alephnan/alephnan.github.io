@@ -1,0 +1,40 @@
+{% set site = load_data(path="data/site.toml") %}
+{% set active_nav = "" %}
+{% if page is defined %}
+    {% set active_nav = page.extra.nav %}
+{% elif section is defined %}
+    {% set active_nav = section.extra.nav %}
+{% endif %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% if page is defined %}{{ page.title }}{% else %}{{ config.title }}{% endif %}{% endblock title %}</title>
+    <link rel="icon" type="image/png" href="{{ get_url(path="assets/images/logo.png") }}">
+    <link rel="stylesheet" href="{{ get_url(path="assets/css/styles.css") }}">
+    <meta name="description" content="{% block description %}{% if page is defined %}{{ page.description }}{% else %}{{ config.description }}{% endif %}{% endblock description %}">
+    <meta name="color-scheme" content="dark">
+    <meta name="theme-color" content="#0A141F">
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Essential Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net 'unsafe-inline'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'{% if active_nav == 'contact' %} https://formsubmit.co{% endif %}; frame-src 'self' https://formsubmit.co; {% if active_nav == 'contact' %}form-action 'self' https://formsubmit.co; {% endif %}object-src 'none'">
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div id="particles-js" aria-hidden="true"></div>
+    {% include "partials/header.html" %}
+    <main id="main">
+        {% block content %}{% endblock content %}
+    </main>
+    {% include "partials/footer.html" %}
+    <script src="{{ get_url(path="assets/js/main.js") }}"></script>
+    {% block scripts %}{% endblock scripts %}
+</body>
+</html>

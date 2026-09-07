@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero">
+    <div class="container hero-frame">
+        <p class="hud-corner hud-tl">SEC.OPS//PORTFOLIO</p>
+        <p class="hud-corner hud-tr">LAT 19.4270 N &middot; LON 99.1677 W</p>
+        <div class="hero-grid">
+            <div class="hero-name-block">
+                <p class="hero-kicker">Subject // Cybersecurity Engineer</p>
+                <h1 class="hero-name">
+                    <span class="hero-name-line">Rafael</span>
+                    <span class="hero-name-line hero-name-outline">Guevara</span>
+
+                </h1>
+                <p class="hero-terminal"><span class="terminal-prompt">&gt;</span><span class="typing-text">threat_research &middot; intrusion_detection &middot; agentic_ai</span><span class="terminal-caret" aria-hidden="true"></span></p>
+                <p class="hero-subtitle">Welcome to my professional portfolio. I specialize in intrusion detection, malware analysis, threat simulation, and AI-driven security automation.</p>
+                <div class="hero-cta">
+                    <a href="{{ get_url(path="/resume/") }}" class="btn btn-primary">View Resume <span aria-hidden="true">&#8594;</span></a>
+                    <a href="{{ get_url(path="/contact/") }}" class="btn">Open Channel <span aria-hidden="true">&#8594;</span></a>
+                </div>
+            </div>
+            <div class="hero-portrait">
+                <div class="reticle">
+                    <span class="reticle-ring" aria-hidden="true"></span>
+                    <span class="reticle-ring-inner" aria-hidden="true"></span>
+                    <div class="portrait-wash scanlines">
+                        <img src="{{ get_url(path="assets/images/ProfilePic.png") }}" alt="Rafael Guevara Hernández" class="portrait-img">
+                    </div>
+                </div>
+                <p class="portrait-caption">ID: alephNaN &middot; CLEARANCE: PUBLIC</p>
+            </div>
+        </div>
+        <div class="hero-statusbar">
+            <p class="status-indicator"><span class="status-dot" aria-hidden="true"></span>SYS: Available</p>
+            <p class="hud-clock">UTC <span data-utc-clock>--:--:--</span></p>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="section-head">
+            <h2 class="section-title">Capabilities</h2>
+            <p class="console-note">3 modules loaded</p>
+        </div>
+        <div class="module-grid">
+            <a href="{{ get_url(path="/resume/") }}" class="module-card corner-ticks" data-reveal="fade-up">
+                <p class="hud-label">MOD//DEFENSE</p>
+                <h3>Cybersecurity</h3>
+                <p class="module-desc">Intrusion detection, malware analysis, and AI-powered security automation</p>
+                <span class="module-cta" aria-hidden="true">&#8594;</span>
+            </a>
+            <a href="{{ get_url(path="/certifications/") }}" class="module-card corner-ticks" data-reveal="fade-up" data-reveal-delay="100">
+                <p class="hud-label">MOD//CREDENTIALS</p>
+                <h3>Certifications</h3>
+                <p class="module-desc">Palo Alto, TryHackMe, and Fortinet certifications</p>
+                <span class="module-cta" aria-hidden="true">&#8594;</span>
+            </a>
+            <a href="{{ get_url(path="/projects/") }}" class="module-card corner-ticks" data-reveal="fade-up" data-reveal-delay="200">
+                <p class="hud-label">MOD//R&amp;D</p>
+                <h3>Projects</h3>
+                <p class="module-desc">MCP servers, AI pipelines, and open-source security tools</p>
+                <span class="module-cta" aria-hidden="true">&#8594;</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="brief-grid" data-reveal="fade-up">
+            <div class="brief-pull">
+                <p class="hud-label">PROFILE//BRIEF</p>
+                <p class="brief-pull-line">Curiosity and analytical rigor, applied to adversarial problems.</p>
+            </div>
+            <div class="brief-body">
+                <p>Senior Cybersecurity Engineer with 3+ years in threat analysis, incident response, and SOC operations. My core work spans malware analysis, threat simulation through pentesting, and designing AI-powered automation pipelines to accelerate security workflows. I'm actively researching agentic AI architectures, LLM red-teaming, and intelligent SOC workflows. Passionate about continuous learning, I approach each challenge with curiosity and analytical rigor.</p>
+                <a href="{{ get_url(path="/resume/") }}" class="btn">View Full Resume <span aria-hidden="true">&#8594;</span></a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

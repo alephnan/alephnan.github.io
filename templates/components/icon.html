@@ -1,0 +1,4 @@
+{% component icon(name: string) -%}
+{% set icons = load_data(path="data/icons.toml") -%}
+<svg viewBox="{{ icons[name].viewbox }}" aria-hidden="true"><path d="{{ icons[name].path }}"/></svg>
+{%- endcomponent icon %}
