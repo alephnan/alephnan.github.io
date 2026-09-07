@@ -9,9 +9,16 @@ export default defineConfig({
   workers: 2,
   forbidOnly: Boolean(process.env.CI),
   retries: 0,
-  reporter: [['list'], ['html', { open: 'never' }]],
+  outputDir: 'test-results',
+  reporter: [['list'], ['html', { open: 'never', outputFolder: 'playwright-report' }]],
   snapshotPathTemplate: '{testDir}/snapshots/{projectName}/{arg}{ext}',
-  expect: { toHaveScreenshot: { maxDiffPixels: 0 } },
+  updateSnapshots: 'none',
+  expect: {
+    toHaveScreenshot: {
+      maxDiffPixels: 0,
+      pathTemplate: '.tools/visual-baselines/{projectName}/{arg}{ext}'
+    }
+  },
   use: {
     baseURL: 'http://127.0.0.1:4173',
     browserName: 'chromium',

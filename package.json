@@ -4,9 +4,9 @@
   "type": "module",
   "scripts": {
     "check": "node scripts/check.js",
-    "pretest": "node scripts/build-test-site.js",
+    "pretest": "node scripts/prepare-tests.js",
     "test": "playwright test",
-    "pretest:visual": "node scripts/build-test-site.js",
+    "pretest:visual": "node scripts/prepare-tests.js",
     "test:visual": "playwright test tests/visual.spec.js"
   },
   "devDependencies": {

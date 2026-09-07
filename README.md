@@ -30,7 +30,7 @@ The production site is generated into ignored `public/`. Zola is the only produc
 | `data/` | Ordered projects, credential groups, capabilities, resume table rows, navigation, social links, and SVG definitions |
 | `templates/` | Unique page structure and prose; shared base layout, partials, and small Tera components |
 | `static/assets/` | Unprocessed CSS, JavaScript, images, and resume PDF |
-| `tests/` | Original visual/text references and browser regression checks |
+| `tests/` | Browser regression checks, text/asset expectations, and the visual reference revision |
 
 Add or reorder repeated content in its TOML array. Projects use `featured` to select the large card; ordinary cards share the same component. Social links have one definition and separate footer/contact display orders. Keep unique rich prose in page templates.
 
@@ -49,7 +49,9 @@ npm run check
 npm test
 ```
 
-`npm run check` validates and builds the production site. `npm test` builds a separate local-URL copy into ignored `.tools/test-site/`, starts a test server, and runs Chromium. The test build never replaces the production artifact. If Zola is outside `PATH`, set `ZOLA_BIN` to its executable path.
+`npm run check` validates and builds the production site. `npm test` builds a separate local-URL copy into ignored `.tools/test-site/`, regenerates reference screenshots from the original site revision, then starts a test server and runs Chromium against the Zola build. The test build never replaces the production artifact. If Zola is outside `PATH`, set `ZOLA_BIN` to its executable path.
+
+Visual checks require Git, `tar`, and a checkout containing the commit pinned in `tests/visual-reference.txt`. For a shallow clone, run `git fetch --unshallow` first. CI checks out the full history.
 
 On Ubuntu, `npx playwright install --with-deps chromium` also installs browser system libraries. Other Linux distributions need the equivalent libraries from their package manager. CI uses Ubuntu 24.04 and Node 24.
 
@@ -64,13 +66,15 @@ The suite covers:
 
 Browser and font fixtures are pinned for repeatable Linux comparisons. Screenshot tests fix the clock, settle animations, and hide only the random particle canvas. Separate behavior tests run the real pinned particle library. Production font and particle loading is unchanged.
 
-Visual and text references come from pre-migration revision `ec40b0eea46d07c20c122c283fa5043cd0fec2ac`. Reference PNGs were captured and verified before migration. For an intentional design or content change, review the differences before updating the relevant snapshots:
+Test results, reports, traces, and screenshot images are generated artifacts and must not be committed. Reference screenshots are rebuilt on every test run from pre-migration revision `ec40b0eea46d07c20c122c283fa5043cd0fec2ac` into ignored `.tools/visual-baselines/`. Actual screenshots and image differences stay in ignored `test-results/` and `playwright-report/`. Missing baselines fail comparison checks. Only the reference revision, text expectations, asset checksums, and test source/fixtures are versioned.
+
+Visual changes must be reviewed against that original source. Accepting a future redesign requires explicitly updating the reference source and its preparation step; updating generated PNGs locally does not change the next run's expectations. For an intentional text or metadata change, review the differences and update the relevant text expectations after running `npm test`:
 
 ```bash
-npm test -- --update-snapshots
+npx playwright test tests/output.spec.js --project=desktop --update-snapshots=changed
 ```
 
-This updates PNG/text expectations, not asset checksums. Change `tests/asset-baseline.json` only alongside an intentional asset change. Use `npx playwright show-report` to review failures. Font fixture licenses and source links are in `tests/fonts/`.
+This updates JSON expectations. Change `tests/asset-baseline.json` only alongside an intentional asset change. Use `npx playwright show-report` to review failures. Font fixture licenses and source links are in `tests/fonts/`.
 
 ## Routes and contact behavior
 

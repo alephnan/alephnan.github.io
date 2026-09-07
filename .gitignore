@@ -38,7 +38,11 @@ CLAUDE.md
 # Zola and development tools
 public/
 node_modules/
-test-results/
-playwright-report/
 .reference/
 .tools/
+
+# Generated test artifacts, including reference screenshots
+test-results/
+playwright-report/
+blob-report/
+tests/snapshots/**/*.png
