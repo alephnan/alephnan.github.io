@@ -7,3 +7,8 @@
 *.webp binary
 *.ico binary
 *.pdf binary
+*.mp4 binary
+*.zip binary
+
+# Keep the downloadable experiment reports identical to their recorded sources.
+static/assets/projects/beetle-nca/*.json -text whitespace=cr-at-eol

@@ -1,0 +1,156 @@
+{
+  "format": "beetle-nca",
+  "version": 1,
+  "dtype": "float32",
+  "byte_order": "little",
+  "weights_file": "weights.f32",
+  "weights_sha256": "6a687bd45ae9471263d09b6bd4104181fcc2d55b76d24753d80750405174cf01",
+  "trainable_parameters": 8336,
+  "checkpoint_step": 3000,
+  "training_seed": 42,
+  "target_sha256": "a7d72a4f20828f530f187f374778214ebdede237e0013ff3e4998dd58634aec4",
+  "tensors": [
+    {
+      "name": "fc1.weight",
+      "shape": [
+        128,
+        48
+      ],
+      "elements": 6144,
+      "byte_offset": 0,
+      "byte_length": 24576,
+      "layout": "output channel, input channel"
+    },
+    {
+      "name": "fc1.bias",
+      "shape": [
+        128
+      ],
+      "elements": 128,
+      "byte_offset": 24576,
+      "byte_length": 512,
+      "layout": "output channel"
+    },
+    {
+      "name": "fc2.weight",
+      "shape": [
+        16,
+        128
+      ],
+      "elements": 2048,
+      "byte_offset": 25088,
+      "byte_length": 8192,
+      "layout": "output channel, input channel"
+    },
+    {
+      "name": "fc2.bias",
+      "shape": [
+        16
+      ],
+      "elements": 16,
+      "byte_offset": 33280,
+      "byte_length": 64,
+      "layout": "output channel"
+    }
+  ],
+  "state": {
+    "channels": 16,
+    "order": [
+      "R_premultiplied",
+      "G_premultiplied",
+      "B_premultiplied",
+      "alpha",
+      "hidden_0",
+      "hidden_1",
+      "hidden_2",
+      "hidden_3",
+      "hidden_4",
+      "hidden_5",
+      "hidden_6",
+      "hidden_7",
+      "hidden_8",
+      "hidden_9",
+      "hidden_10",
+      "hidden_11"
+    ],
+    "reference_layout": "NCHW",
+    "training_grid_wh": [
+      96,
+      96
+    ],
+    "precision": "float32",
+    "clamp_recurrent_state": false
+  },
+  "perception": {
+    "order": [
+      "state channels 0..15",
+      "dx channels 0..15",
+      "dy channels 0..15"
+    ],
+    "operation": "cross-correlation",
+    "dx_kernel": [
+      [
+        -0.125,
+        0,
+        0.125
+      ],
+      [
+        -0.25,
+        0,
+        0.25
+      ],
+      [
+        -0.125,
+        0,
+        0.125
+      ]
+    ],
+    "dy_kernel": [
+      [
+        -0.125,
+        -0.25,
+        -0.125
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0.125,
+        0.25,
+        0.125
+      ]
+    ],
+    "x_direction": "right",
+    "y_direction": "down",
+    "padding": "zero outside the grid"
+  },
+  "update": {
+    "hidden_activation": "ReLU",
+    "output_activation": "none",
+    "residual_step_size": 1.0,
+    "fire_rate": 0.5,
+    "random_mask": "Independent Bernoulli per cell and step, shared across all 16 channels",
+    "alive": "3x3 maximum alpha > 0.1",
+    "sequence": [
+      "compute pre_alive from old state",
+      "compute perception and dense update",
+      "candidate = state + update * random_mask",
+      "compute post_alive from candidate",
+      "next_state = candidate * (pre_alive AND post_alive)"
+    ]
+  },
+  "seed": {
+    "position": "center cell",
+    "rgb": [
+      0,
+      0,
+      0
+    ],
+    "alpha_and_hidden": 1,
+    "all_other_cells": 0
+  },
+  "damage": "Set all 16 channels to zero inside an erase mask; never automatically reseed.",
+  "render": "Clamp alpha for display only. Composite premultiplied RGB + background * (1-alpha); clamp displayed RGB to [0,1]."
+}

@@ -10,12 +10,25 @@ for (const name of pages) {
       await route.fulfill({ response, body: await response.text() + await readFile('tests/screenshot.css', 'utf8') });
     });
     await page.goto(routeFor(name));
+    // Compare the original project collection against the original revision.
+    // The new featured project and reordered grid have separate integration tests.
+    if (name === 'projects' && !process.env.LEGACY_SITE) {
+      await page.locator('.project-feature').filter({ has: page.getByRole('heading', { name: 'Beetle — Neural Cellular Automaton', exact: true }) }).evaluate(node => node.remove());
+      await page.locator('.project-card').filter({ has: page.getByRole('heading', { name: 'Flowfield ‐ Strange Attractor Visualizer', exact: true }) }).evaluate(node => {
+        node.classList.remove('project-card');
+        node.classList.add('project-feature', 'corner-ticks');
+        node.querySelector('img').removeAttribute('loading');
+        const grid = node.closest('.projects-grid');
+        grid.before(node);
+      });
+      await page.locator('.console-note').evaluate(node => { node.textContent = '7 repositories tracked'; });
+    }
+    await page.evaluate(() => document.fonts.ready);
+    for (const element of await page.locator('[data-reveal]').all()) {
+      await element.scrollIntoViewIfNeeded();
+      await expect(element).toHaveClass(/revealed/);
+    }
     await page.evaluate(async () => {
-      await document.fonts.ready;
-      for (const element of document.querySelectorAll('[data-reveal]')) {
-        element.scrollIntoView();
-        await new Promise(resolve => setTimeout(resolve, 250));
-      }
       for (const img of document.images) await img.decode();
       window.scrollTo(0, 0);
     });

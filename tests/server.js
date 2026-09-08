@@ -6,7 +6,8 @@ const root = resolve(process.env.SITE_ROOT || '.tools/test-site');
 const types = {
   '.html': 'text/html; charset=utf-8', '.css': 'text/css',
   '.js': 'text/javascript', '.png': 'image/png', '.jpg': 'image/jpeg',
-  '.pdf': 'application/pdf', '.txt': 'text/plain', '.xml': 'application/xml'
+  '.pdf': 'application/pdf', '.txt': 'text/plain', '.xml': 'application/xml',
+  '.mp4': 'video/mp4', '.svg': 'image/svg+xml', '.json': 'application/json', '.zip': 'application/zip'
 };
 
 createServer(async (request, response) => {

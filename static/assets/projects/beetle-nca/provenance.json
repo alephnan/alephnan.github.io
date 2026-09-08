@@ -1,0 +1,20 @@
+{
+  "selected_seed": 30012,
+  "growth_trial_index": 12,
+  "repair_case_index": 12,
+  "damage_shape": "circle",
+  "display": "Premultiplied RGB composited over [10, 10, 12], clipped only for display; nearest-neighbor scale 6",
+  "sources_sha256": {
+    "assets/original.png": "cae0d4c570cfd744df452d74e29333f5ed4977796a5be98ddbb0c7f21d551fb0",
+    "assets/target.npy": "a7d72a4f20828f530f187f374778214ebdede237e0013ff3e4998dd58634aec4",
+    "results/evaluation-states.npz": "65d0496f6b9070e7feb10e84e33020c3ba8c61c110229a2e052ce72b05589f2e",
+    "results/evaluation.json": "48b408f88e4313bf076bd8a70a9384f8b56695936eff8da3b2ea03e09f5632d9",
+    "results/animations.json": "095790891fec24ce3c4b895ffaa5f77d772dcd14a66c296a3d5ef7055419c4fb",
+    "checkpoints/best.pt": "7646d73417a70e4b91a805a548baecaac28bc78ecbc5971a3ad5668e13beaae6"
+  },
+  "project_cover": {
+    "file": "project-card.png",
+    "kind": "AI-generated concept illustration",
+    "description": "A holographic beetle over a circuit chip, matching the other project covers. This cover is not model output; the case-study specimens and recordings are actual inference."
+  }
+}

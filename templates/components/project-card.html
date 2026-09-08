@@ -13,7 +13,7 @@
         </div>
         <div class="project-links">
             {% for link in project.links %}
-            <a href="{{ link.url }}" class="btn {% if link.primary %}btn-primary {% endif %}btn-small" target="_blank" rel="noopener">{{ link.label }} <span aria-hidden="true">&#8599;</span></a>
+            {% if link.content is defined %}<a href="{{ get_url(path=link.content) }}" class="btn {% if link.primary %}btn-primary {% endif %}btn-small">{{ link.label }} <span aria-hidden="true">&#8594;</span></a>{% else %}<a href="{{ link.url }}" class="btn {% if link.primary %}btn-primary {% endif %}btn-small" target="_blank" rel="noopener">{{ link.label }} <span aria-hidden="true">&#8599;</span></a>{% endif %}
             {% endfor %}
         </div>
     </div>

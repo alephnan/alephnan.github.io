@@ -29,8 +29,8 @@ export default defineConfig({
     trace: 'retain-on-failure'
   },
   projects: [
-    { name: 'mobile', testMatch: ['**/visual.spec.js', '**/behavior.spec.js'], use: { viewport: { width: 390, height: 844 } } },
-    { name: 'tablet', testMatch: ['**/visual.spec.js', '**/behavior.spec.js'], use: { viewport: { width: 768, height: 1024 } } },
+    { name: 'mobile', testMatch: ['**/visual.spec.js', '**/behavior.spec.js', '**/beetle-nca.spec.js'], use: { viewport: { width: 390, height: 844 } } },
+    { name: 'tablet', testMatch: ['**/visual.spec.js', '**/behavior.spec.js', '**/beetle-nca.spec.js'], use: { viewport: { width: 768, height: 1024 } } },
     { name: 'desktop', use: { viewport: { width: 1440, height: 1000 } } }
   ],
   webServer: {
