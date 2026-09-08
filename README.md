@@ -36,7 +36,19 @@ Add or reorder repeated content in its TOML array. Projects use `featured` to se
 
 Use `get_url(path="@/resume.md")` for page links and `get_url(path="assets/...")` for assets. This validates content references and keeps assets working on nested routes and the 404 page. Tera 2 components use `{{<component argument={value} />}}`; older Tera macro syntax is incompatible with the pinned version.
 
-Preserve existing classes, IDs, element nesting, and inline spacing when editing templates. Some layouts depend on direct-child and positional CSS selectors. Styling remains centralized in `static/assets/css/styles.css`.
+Preserve existing classes, IDs, element nesting, and inline spacing when editing templates. Some layouts depend on direct-child and positional CSS selectors. Shared styling remains centralized in `static/assets/css/styles.css`. Page-specific additions can use the base template's `styles` block and scoped selectors, inheriting the shared tokens.
+
+### Project case studies
+
+The Beetle NCA case study lives at `/projects/beetle-nca/` and uses the same navigation, footer, typography, colors, and component system as the rest of the site. Its R&D Index card is defined in `data/projects.toml`. Internal project links use a `content` reference such as `@/beetle-nca.md`; external links retain their existing `url` field and new-tab behavior.
+
+- `content/beetle-nca.md`: route, metadata, and active navigation.
+- `templates/beetle-nca.html`: the experiment, method, results, and source download.
+- `static/assets/css/beetle-nca.css`: page-scoped styles using the existing theme tokens.
+- `static/assets/js/beetle-nca.js`: specimen views, accessible recording tabs, measured charts, and command copying.
+- `static/assets/projects/beetle-nca/`: original recordings, numerical state figures, evaluation data, and a reproducible experiment ZIP.
+
+The website plays recorded inference; it does not run the neural model in the browser. The experiment ZIP contains Python source, compact checkpoints, and recorded evidence. `provenance.json` records the evidence sources and identifies the project-card artwork as an AI-generated concept illustration. The specimen images and recordings are actual inference.
 
 ## Verify changes
 
@@ -63,10 +75,13 @@ The suite covers:
 - Navigation, keyboard focus, scroll reveals, hover styling, normal/reduced motion, printing, and PDF export.
 - Contact validation, sanitization, native production POSTs, localhost success navigation, and network errors. Every FormSubmit request is intercepted; tests send no messages.
 - SHA-256 equality of the original CSS, images, and PDF.
+- The Beetle case study at mobile, tablet, and desktop sizes: internal navigation, specimen views, keyboard recording tabs, paused hidden media, evidence-backed charts, local assets, source download, clipboard access, and no-JavaScript fallbacks.
 
 Browser and font fixtures are pinned for repeatable Linux comparisons. Screenshot tests fix the clock, settle animations, and hide only the random particle canvas. Separate behavior tests run the real pinned particle library. Production font and particle loading is unchanged.
 
 Test results, reports, traces, and screenshot images are generated artifacts and must not be committed. Reference screenshots are rebuilt on every test run from pre-migration revision `ec40b0eea46d07c20c122c283fa5043cd0fec2ac` into ignored `.tools/visual-baselines/`. Actual screenshots and image differences stay in ignored `test-results/` and `playwright-report/`. Missing baselines fail comparison checks. Only the reference revision, text expectations, asset checksums, and test source/fixtures are versioned.
+
+The original-page visual checks temporarily remove the Beetle feature, restore Flowfield's former featured placement, and restore the old project count to compare the original collection against its pinned reference. Separate integration checks verify that Beetle leads the page and that Flowfield and VirusTotal follow in the first grid row on desktop, stacking in that order on smaller screens. The full project text expectation includes the current order. Screenshot setup waits for each actual scroll reveal instead of assuming a fixed delay; production animation behavior is unchanged.
 
 Visual changes must be reviewed against that original source. Accepting a future redesign requires explicitly updating the reference source and its preparation step; updating generated PNGs locally does not change the next run's expectations. For an intentional text or metadata change, review the differences and update the relevant text expectations after running `npm test`:
 

@@ -1,11 +1,33 @@
 [[projects]]
+title = "Beetle — Neural Cellular Automaton"
+label = "/beetle-nca"
+meta = "Python · PyTorch · Self-organization"
+description = "An 8,336-parameter neural cellular automaton learns to grow a beetle from one seed cell and recover from local damage. A reproducible experiment with recorded inference and held-out evaluation."
+image = "assets/projects/beetle-nca/project-card.png"
+alt = "Concept illustration of a cyan and magenta holographic beetle growing above a circuit chip"
+featured = true
+experimental = true
+delay = 0
+tags = ["Neural Cellular Automata", "PyTorch", "Machine Learning"]
+
+[[projects.links]]
+content = "@/beetle-nca.md"
+label = "Case Study"
+primary = true
+
+[[projects.links]]
+url = "https://github.com/alephnan/beetle-nca"
+label = "Repository"
+primary = false
+
+[[projects]]
 title = "Flowfield ‐ Strange Attractor Visualizer"
 label = "/flowfield"
 meta = "Type: WebGPU · Lang: TypeScript · Lib: Three.js"
 description = "A GPU-powered visualizer that animates up to one million particles across nine chaotic dynamical systems, with a WebGL2 fallback for broader browser support."
 image = "assets/images/Flowfield-tool-card.png"
 alt = "Flowfield strange attractor visualization"
-featured = true
+featured = false
 experimental = false
 delay = 0
 tags = ["Scientific Visualization", "WebGPU", "Three.js", "TypeScript"]

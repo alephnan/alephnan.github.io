@@ -3,7 +3,7 @@
 {% block content %}
 {% set data = load_data(path="data/projects.toml") %}
 {% <page_header breadcrumb="FILE://PROJECTS" title="R&D Index"> %}
-    <p class="console-note">{{ data.projects | length }} repositories tracked</p>
+    <p class="console-note">{{ data.projects | length }} projects tracked</p>
 {% </page_header> %}
 
 <section class="section">

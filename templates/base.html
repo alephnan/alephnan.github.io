@@ -13,6 +13,7 @@
     <title>{% block title %}{% if page is defined %}{{ page.title }}{% else %}{{ config.title }}{% endif %}{% endblock title %}</title>
     <link rel="icon" type="image/png" href="{{ get_url(path="assets/images/logo.png") }}">
     <link rel="stylesheet" href="{{ get_url(path="assets/css/styles.css") }}">
+    {% block styles %}{% endblock styles %}
     <meta name="description" content="{% block description %}{% if page is defined %}{{ page.description }}{% else %}{{ config.description }}{% endif %}{% endblock description %}">
     <meta name="color-scheme" content="dark">
     <meta name="theme-color" content="#0A141F">

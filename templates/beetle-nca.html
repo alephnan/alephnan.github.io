@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{{ get_url(path="assets/css/beetle-nca.css") }}">
+{% endblock styles %}
+
+{% block content %}
+{% <page_header breadcrumb="FILE://PROJECTS/BEETLE-NCA" title="Beetle NCA"> %}
+    <p class="console-note">Research log <span aria-hidden="true">//</span> <span class="chip chip-amber">Experimental</span></p>
+{% </page_header> %}
+
+<article class="nca-case-study">
+    <section class="section nca-overview" aria-labelledby="nca-intro-title">
+        <div class="container">
+            <a class="nca-back" href="{{ get_url(path="@/projects.md") }}"><span aria-hidden="true">&#8592;</span> Back to R&amp;D Index</a>
+            <div class="nca-hero">
+                <div class="nca-hero-copy">
+                    <p class="hud-label">Research // Emergent form</p>
+                    <h2 id="nca-intro-title">Small rules.<br><span>Living patterns.</span></h2>
+                    <p class="nca-lead">One seed cell. A tiny neural network. A beetle that learns to grow—and repair itself through local interactions.</p>
+                    <div class="nca-actions"><a class="btn btn-primary" href="#experiment">Watch it grow <span aria-hidden="true">&#8595;</span></a><a class="btn" href="#results">Inspect results <span aria-hidden="true">&#8594;</span></a></div>
+                    <div class="project-tags"><span>Neural Cellular Automata</span><span>PyTorch</span><span>Self-organization</span></div>
+                </div>
+                <figure class="nca-specimen corner-ticks">
+                    <div class="nca-panel-heading"><span class="hud-label">Specimen 001 // Beetle</span><span id="nca-state-label" class="nca-signal">Learned state</span></div>
+                    <div class="nca-specimen-stage"><span class="nca-grid-label">96 × 96 cell grid</span><img id="nca-specimen-image" src="{{ get_url(path="assets/projects/beetle-nca/grown.png") }}" width="576" height="576" alt="The learned beetle after 384 recurrent updates"></div>
+                    <figcaption><div><strong id="nca-state-caption">Grown from a single seed</strong><span id="nca-state-detail">384 updates · seed 30012</span></div><div class="nca-state-controls" role="group" aria-label="Specimen view"><button type="button" data-nca-state="grown" data-src="{{ get_url(path="assets/projects/beetle-nca/grown.png") }}" aria-pressed="true">Grown</button><button type="button" data-nca-state="target" data-src="{{ get_url(path="assets/projects/beetle-nca/target.png") }}" aria-pressed="false">Target</button></div></figcaption>
+                </figure>
+            </div>
+            <dl class="nca-metrics"><div><dt>Learned parameters</dt><dd>8,336</dd></div><div><dt>Growth trials passed</dt><dd>16<span>/16</span></dd></div><div><dt>Local repair success · 26/32</dt><dd>81.25<span>%</span></dd></div><div><dt>Training on one laptop GPU</dt><dd>50.2<span> min</span></dd></div></dl>
+        </div>
+    </section>
+
+    <nav class="nca-section-nav container" aria-label="Case study sections"><a href="#experiment">01 / Experiment</a><a href="#method">02 / Method</a><a href="#results">03 / Evidence</a><a href="#reproduce">04 / Reproduce</a></nav>
+
+    <section class="section" id="experiment" aria-labelledby="nca-experiment-title">
+        <div class="container">
+            <div class="nca-section-head"><div><p class="hud-label">01 // The experiment</p><h2 class="section-title" id="nca-experiment-title">A pattern that finds<br>its way back.</h2></div><p>A shared update rule turns local information into a recognizable whole. The same rule continues running after damage.</p></div>
+            <div class="nca-viewer corner-ticks">
+                <div class="nca-viewer-toolbar"><div role="tablist" aria-label="Inference recordings"><button type="button" role="tab" id="nca-tab-growth" aria-controls="nca-panel-growth" aria-selected="true" tabindex="0">01 / Growth</button><button type="button" role="tab" id="nca-tab-repair" aria-controls="nca-panel-repair" aria-selected="false" tabindex="-1">02 / Regeneration</button></div><span class="nca-recorded">Recorded inference</span></div>
+                <div role="tabpanel" id="nca-panel-growth" aria-labelledby="nca-tab-growth" tabindex="0"><video controls playsinline preload="metadata" poster="{{ get_url(path="assets/projects/beetle-nca/growth-poster.png") }}" width="816" height="462" aria-label="Growth from one seed cell alongside the training target"><source src="{{ get_url(path="assets/projects/beetle-nca/growth.mp4") }}" type="video/mp4">Download the <a href="{{ get_url(path="assets/projects/beetle-nca/growth.mp4") }}">growth recording</a>.</video><div class="nca-video-caption"><p><strong>From a single cell to a beetle.</strong> Each cell reads its neighbors, then applies the same small neural network. Shape emerges over 384 recurrent updates.</p><span>Seed 30012<br>384 updates</span></div></div>
+                <div role="tabpanel" id="nca-panel-repair" aria-labelledby="nca-tab-repair" tabindex="0" hidden><video controls playsinline preload="none" poster="{{ get_url(path="assets/projects/beetle-nca/repair-final.png") }}" width="1216" height="462" aria-label="Recovery after circular and rectangular damage"><source src="{{ get_url(path="assets/projects/beetle-nca/regeneration.mp4") }}" type="video/mp4">Download the <a href="{{ get_url(path="assets/projects/beetle-nca/regeneration.mp4") }}">regeneration recording</a>.</video><div class="nca-video-caption"><p><strong>Erase a patch. Let the rule continue.</strong> Circular and rectangular cuts clear all 16 state channels. Surviving cells rebuild parts of the damaged pattern.</p><span>2 damage shapes<br>384 more updates</span></div></div>
+            </div>
+            <p class="nca-caption">The displayed run is the median held-out growth trial, selected by silhouette overlap. Actual inference; no target blending or automatic reseeding. <a href="{{ get_url(path="assets/projects/beetle-nca/animations.json") }}">Recording metadata &#8599;</a></p>
+            <div class="nca-sequence" aria-label="Circular damage experiment, seed 30012">
+                <figure><p><span>01</span> Target</p><img src="{{ get_url(path="assets/projects/beetle-nca/target.png") }}" loading="lazy" width="576" height="576" alt="Prepared beetle artwork with crisp red markings"><figcaption>The form to learn</figcaption></figure>
+                <figure><p><span>02</span> Grown</p><img src="{{ get_url(path="assets/projects/beetle-nca/grown.png") }}" loading="lazy" width="576" height="576" alt="Beetle grown by the neural cellular automaton"><figcaption>After 384 updates</figcaption></figure>
+                <figure><p><span>03</span> Damaged</p><img src="{{ get_url(path="assets/projects/beetle-nca/damaged.png") }}" loading="lazy" width="576" height="576" alt="Grown beetle with a circular region of its lower left body erased"><figcaption>20.3% of foreground erased</figcaption></figure>
+                <figure><p><span>04</span> Repaired</p><img src="{{ get_url(path="assets/projects/beetle-nca/repaired.png") }}" loading="lazy" width="576" height="576" alt="Beetle after recovering much of its missing body"><figcaption>384 more updates</figcaption></figure>
+            </div>
+        </div>
+    </section>
+
+    <section class="section nca-method-band" id="method" aria-labelledby="nca-method-title"><div class="container">
+        <div class="nca-section-head"><div><p class="hud-label">02 // Under the surface</p><h2 class="section-title" id="nca-method-title">No cell sees<br>the whole picture.</h2></div><p>Every cell carries color, an alpha value, and 12 hidden values. The same learned rule is applied across the entire grid.</p></div>
+        <div class="nca-method-grid"><div class="nca-rule corner-ticks"><p class="hud-label">One recurrent update</p><ol><li><span>01</span><div><h3>Perceive</h3><p>State + horizontal &amp; vertical Sobel gradients</p></div><b>48</b></li><li><span>02</span><div><h3>Compute</h3><p>Pointwise neural network · ReLU</p></div><b>128</b></li><li><span>03</span><div><h3>Update</h3><p>Residual change · 50% cell firing probability</p></div><b>16</b></li></ol><p class="nca-rule-loop">Apply life mask <span aria-hidden="true">&#8594;</span> Repeat <span aria-hidden="true">&#8626;</span></p></div><div class="nca-method-notes"><div><p class="hud-label">A // Learning</p><h3>Train for persistence.</h3><p>A pool of 1,024 states teaches the model to keep a pattern alive. Fresh seeds and partially damaged states appear in training, so growth and repair share one rule.</p></div><div><p class="hud-label">B // Constraint</p><h3>Life needs a neighbor.</h3><p>A cell survives only when its 3 × 3 neighborhood contains sufficient alpha before and after the update. A completely erased grid stays empty until explicitly reseeded.</p></div><p><a href="{{ get_url(path="assets/projects/beetle-nca/model.json") }}">Inspect the model specification &#8599;</a></p></div></div>
+        <dl class="nca-training-specs"><div><dt>Unrolled training steps</dt><dd>96–160</dd></div><div><dt>Optimizer updates</dt><dd>3,000</dd></div><div><dt>Laptop GPU · 8 GB</dt><dd>RTX 4060</dd></div><div><dt>Float32 weight export</dt><dd>33,344 B</dd></div></dl>
+    </div></section>
+
+    <section class="section" id="results" aria-labelledby="nca-results-title"><div class="container">
+        <div class="nca-section-head"><div><p class="hud-label">03 // The evidence</p><h2 class="section-title" id="nca-results-title">Measured beyond<br>the demo.</h2></div><p>Sixteen held-out growth seeds. Two damage shapes per trial. Separate checks for growth, repair, and stability.</p></div>
+        <div class="nca-results-grid"><section class="nca-result"><div class="nca-result-head"><h3>Growth</h3><span class="nca-badge">16 / 16 passed</span></div><p class="nca-result-value">0.8357 <span>mean silhouette IoU</span></p><div id="nca-growth-chart" class="nca-growth-chart"></div><p class="nca-chart-note">Dashed line: IoU ≥ 0.80 at update 384.</p></section><section class="nca-result"><div class="nca-result-head"><h3>Local repair</h3><span class="nca-badge">26 / 32 passed</span></div><p class="nca-result-value">81.25% <span>of damage cases recovered</span></p><div id="nca-repair-chart" class="nca-repair-chart"></div><p class="nca-chart-note nca-legend"><span class="nca-legend-pass" aria-hidden="true"></span>Recovered <span class="nca-legend-fail" aria-hidden="true"></span>Below target</p></section></div>
+        <div class="nca-findings"><div><p class="hud-label">Stability</p><p>All 16 trials retained silhouette IoU ≥ 0.75 at steps 512, 768, and 1,024.</p></div><div><p class="hud-label">Color fidelity</p><p>Mean foreground RGBA error: <strong>0.020522</strong>. Shape overlap alone does not capture the fine red markings.</p></div><div><p class="hud-label">Recovery criterion</p><p>Erase 10–30% of foreground, then recover ≥90% of pre-damage IoU within 384 further updates.</p></div></div>
+        <details class="nca-training-curve"><summary>Inspect the training curve <span aria-hidden="true">+</span></summary><img src="{{ get_url(path="assets/projects/beetle-nca/training-curve.svg") }}" loading="lazy" width="1000" height="440" alt="Original logarithmic training loss over 3,000 optimizer updates, including a 50-update moving average"><p class="nca-caption">Original experiment figure. Adam learning rate was reduced after update 2,000; training stopped when validation acceptance passed.</p></details>
+        <aside class="nca-limitations"><p class="hud-label">Limits // What this doesn’t prove</p><p>This is one model trained on one artwork. Six local repair cases failed. The first evaluation missed the repair target by one case; training continued and the final evaluation used fresh seeds. Half-erasure is a separate stress test, not an acceptance claim.</p><p><a href="{{ get_url(path="assets/projects/beetle-nca/evaluation.json") }}">Read every trial &#8599;</a></p></aside>
+    </div></section>
+
+    <section class="section nca-reproduce" id="reproduce" aria-labelledby="nca-reproduce-title"><div class="container nca-reproduce-grid"><div><p class="hud-label">04 // Reproduce it</p><h2 class="section-title" id="nca-reproduce-title">Small enough to inspect.<br>Complete enough to rebuild.</h2><p>The experiment package includes the Python source, tests, selected checkpoint, float32 export, original target, and measured results.</p><div class="nca-actions"><a class="btn btn-primary" href="{{ get_url(path="assets/projects/beetle-nca/experiment.zip") }}" download>Download experiment <span aria-hidden="true">&#8595;</span></a><a class="btn" href="https://github.com/alephnan/beetle-nca" target="_blank" rel="noopener">Repository <span aria-hidden="true">&#8599;</span></a></div><p class="nca-caption">ZIP · Source, evidence, and MIT license<br><a href="{{ get_url(path="assets/projects/beetle-nca/reproduction.txt") }}">Read the reproduction guide &#8599;</a></p></div><div class="nca-terminal"><div class="nca-terminal-heading"><span>From the extracted project folder</span><button id="nca-copy" type="button">Copy</button></div><p># Evaluate the included checkpoint on CPU</p><pre><code id="nca-command">python -m nca evaluate --checkpoint checkpoints/best.pt --base-seed 30000 --device cpu --out runs/evaluation</code></pre><p class="nca-terminal-note">Python 3.12 · install dependencies first.<br>Training uses CUDA; evaluation also supports CPU.</p><span id="nca-copy-status" class="visually-hidden" role="status"></span></div></div></section>
+    <div class="container nca-endnote"><p>Inspired by <a href="https://distill.pub/2020/growing-ca/" target="_blank" rel="noopener noreferrer">Growing Neural Cellular Automata &#8599;</a> (Mordvintsev et al., 2020). Supplied artwork; no pretrained NCA weights.</p><a href="{{ get_url(path="@/projects.md") }}">Return to R&amp;D Index &#8594;</a></div>
+    <noscript><p class="container nca-caption">JavaScript is disabled. Growth: 16/16 passed. Repair: 26/32 passed. <a href="{{ get_url(path="assets/projects/beetle-nca/regeneration.mp4") }}">Watch the regeneration recording directly.</a></p></noscript>
+</article>
+{% endblock content %}
+
+{% block scripts %}
+    <script src="{{ get_url(path="assets/projects/beetle-nca/site-data.js") }}" defer></script>
+    <script src="{{ get_url(path="assets/js/beetle-nca.js") }}" defer></script>
+{% endblock scripts %}
