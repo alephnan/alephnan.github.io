@@ -2,14 +2,14 @@
 content = "@/resume.md"
 label = "MOD//DEFENSE"
 title = "Cybersecurity"
-description = "Intrusion detection, malware analysis, and AI-powered security automation"
+description = "Incident response, malware analysis, and AI-powered security automation"
 delay = 0
 
 [[modules]]
 content = "@/certifications.md"
 label = "MOD//CREDENTIALS"
 title = "Certifications"
-description = "Palo Alto, TryHackMe, and Fortinet certifications"
+description = "Palo Alto micro-credentials, TryHackMe learning paths, and Fortinet certifications"
 delay = 100
 
 [[modules]]
