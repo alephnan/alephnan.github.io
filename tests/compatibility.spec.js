@@ -32,7 +32,7 @@ test('nested unknown URLs use the styled 404 with working assets and navigation'
   expect(failures).toEqual([]);
 });
 
-test('PDF export keeps its original filename and content', async ({ page }) => {
+test('current resume PDF downloads with its established filename', async ({ page }) => {
   await page.goto('/resume/');
   const pending = page.waitForEvent('download');
   await page.getByRole('link', { name: 'Export PDF' }).click();

@@ -1,6 +1,6 @@
 base_url = "https://alephnan.github.io"
 title = "Rafael Guevara Hernández — Cybersecurity Engineer"
-description = "Professional portfolio and resume for Rafael Guevara Hernández, cybersecurity engineer working across threat research, intrusion detection, and agentic AI."
+description = "Professional portfolio and resume for Rafael Guevara Hernández, cybersecurity engineer working in incident response, malware analysis, and AI-driven security automation."
 default_language = "en"
 compile_sass = false
 minify_html = false

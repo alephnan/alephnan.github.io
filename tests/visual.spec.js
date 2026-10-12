@@ -1,5 +1,6 @@
 import { test, expect, pages, routeFor } from './fixtures.js';
 import { readFile } from 'node:fs/promises';
+import { restoreOriginalCopy } from './visual-copy.js';
 
 for (const name of pages) {
   test(`${name} appearance`, async ({ page }) => {
@@ -10,6 +11,7 @@ for (const name of pages) {
       await route.fulfill({ response, body: await response.text() + await readFile('tests/screenshot.css', 'utf8') });
     });
     await page.goto(routeFor(name));
+    if (!process.env.LEGACY_SITE) await restoreOriginalCopy(page, name);
     // Compare the original project collection against the original revision.
     // The new featured project and reordered grid have separate integration tests.
     if (name === 'projects' && !process.env.LEGACY_SITE) {

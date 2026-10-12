@@ -5,7 +5,7 @@ import { test, expect, pages, routeFor } from './fixtures.js';
 
 const root = resolve(process.env.SITE_ROOT || '.tools/test-site');
 
-test('CSS, images, and the PDF remain byte-identical', async () => {
+test('CSS, images, and the current resume PDF match their expected hashes', async () => {
   const baseline = JSON.parse(await readFile('tests/asset-baseline.json', 'utf8'));
   for (const [file, hash] of Object.entries(baseline)) {
     expect(createHash('sha256').update(await readFile(resolve(root, file))).digest('hex'), file).toBe(hash);
@@ -15,6 +15,8 @@ test('CSS, images, and the PDF remain byte-identical', async () => {
 test('generated pages preserve content and metadata and have valid local references', async ({ page }) => {
   for (const name of pages) {
     await page.goto(routeFor(name));
+    await expect(page.locator('.ticker-seq').first().locator('span').nth(0)).toHaveText('THM RANK 2024 #1 MX');
+    await expect(page.locator('.ticker-seq').first().locator('span').nth(1)).toHaveText('GLOBAL TOP 1% · ACHIEVED 2024');
     const actual = await page.evaluate(() => {
       const walker = document.createTreeWalker(document.querySelector('main'), NodeFilter.SHOW_TEXT);
       const parts = [];

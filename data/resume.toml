@@ -1,22 +1,22 @@
 [[skills]]
 label = "Security Tools"
-value = "Cortex XDR/XSIAM (Palo Alto), Splunk, Panorama, Burp Suite, Metasploit, Nmap."
+value = "Cortex XDR/XSIAM, Splunk, FortiSIEM, CrowdStrike Falcon."
 
 [[skills]]
-label = "Network Protocols"
-value = "TCP/IP, DNS, HTTP/S, DHCP, ARP, ICMP, SNMP; packet analysis and inspection."
+label = "Malware & Network Analysis"
+value = "YARA, REMnux, FLARE VM, Sysinternals, x64dbg, IDA (basic), Wireshark, tcpdump."
 
 [[skills]]
 label = "Frameworks"
-value = "MITRE ATT&CK, Cyber Kill Chain, OWASP Top 10, Zero Trust Architecture."
+value = "MITRE ATT&CK, Cyber Kill Chain, OWASP Top 10."
 
 [[skills]]
 label = "Programming"
-value = "Python (Advanced), Bash, SQL, Java; REST API integration and workflow automation."
+value = "Python, Bash, PowerShell, SQL, REST APIs; five years using Linux/Unix and Python across employment, university, and labs."
 
 [[skills]]
 label = "AI & Automation"
-value = "LLM-powered threat analysis, RAG architectures, agentic security workflows."
+value = "LLM-assisted analysis, RAG architectures, multi-agent workflows, MCP integrations."
 
 [[skills]]
 label = "Languages"

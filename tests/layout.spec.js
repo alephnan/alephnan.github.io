@@ -12,7 +12,7 @@ async function expectColumns(page, selector, columns) {
   }
 }
 
-for (const width of [639, 640, 641, 767, 768, 769, 991, 992, 993]) {
+for (const width of [390, 639, 640, 641, 767, 768, 769, 991, 992, 993, 1440]) {
   test(`layouts remain intact at ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 1000 });
     // Reveal transforms are removed through the site's own accessibility preference.
