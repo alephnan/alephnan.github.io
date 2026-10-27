@@ -52,7 +52,7 @@ The website plays recorded inference; it does not run the neural model in the br
 
 ## Verify changes
 
-Use Node 24 or newer for development checks:
+Use Node 24.22.1 or a newer 24.x release for development checks. The `engines` requirement and `.npmrc` enforce this supported range during dependency installation:
 
 ```bash
 npm ci
@@ -65,7 +65,7 @@ npm test
 
 Visual checks require Git, `tar`, and a checkout containing the commit pinned in `tests/visual-reference.txt`. For a shallow clone, run `git fetch --unshallow` first. CI checks out the full history.
 
-On Ubuntu, `npx playwright install --with-deps chromium` also installs browser system libraries. Other Linux distributions need the equivalent libraries from their package manager. CI uses Ubuntu 24.04 and Node 24.
+On Ubuntu, `npx playwright install --with-deps chromium` also installs browser system libraries. Other Linux distributions need the equivalent libraries from their package manager. CI uses Ubuntu 24.04 and pins Node 24.22.1.
 
 The suite covers:
 
