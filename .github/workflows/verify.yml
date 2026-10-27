@@ -23,7 +23,7 @@ jobs:
           fetch-depth: 0 # Visual baselines are rebuilt from the original source revision.
       - uses: actions/setup-node@v6
         with:
-          node-version: '24'
+          node-version: '24.22.1'
           cache: npm
       - name: Install pinned Zola
         run: bash scripts/install-zola.sh
